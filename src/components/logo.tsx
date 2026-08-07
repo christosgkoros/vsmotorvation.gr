@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { asset } from "@/lib/asset";
+
 type LogoProps = {
   /** Ύψος σε px. Το πλάτος ακολουθεί την αναλογία του λογότυπου. */
   height?: number;
@@ -14,7 +16,7 @@ type LogoProps = {
 export function Logo({ height = 36, variant = "dark", className }: LogoProps) {
   return (
     <img
-      src={variant === "dark" ? "/brand/logo-dark.svg" : "/brand/logo.svg"}
+      src={asset(variant === "dark" ? "/brand/logo-dark.svg" : "/brand/logo.svg")}
       alt="VS Motorvation"
       height={height}
       style={{ height }}
@@ -27,7 +29,7 @@ export function Logo({ height = 36, variant = "dark", className }: LogoProps) {
 export function LogoMark({ height = 40, variant = "dark", className }: LogoProps) {
   return (
     <img
-      src={variant === "dark" ? "/brand/mark-dark.svg" : "/brand/mark.svg"}
+      src={asset(variant === "dark" ? "/brand/mark-dark.svg" : "/brand/mark.svg")}
       alt=""
       aria-hidden
       height={height}

@@ -1,0 +1,54 @@
+name: Deploy στο GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Μία deploy τη φορά· νέα push ακυρώνει την προηγούμενη που περιμένει.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Το site σερβίρεται από /vsmotorvation.gr/ (project page).
+      # Για custom domain: κάντε το κενό string.
+      NEXT_PUBLIC_BASE_PATH: /vsmotorvation.gr
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx tsc --noEmit
+
+      - run: npm run build
+
+      # Το Pages αγνοεί φακέλους που ξεκινούν με _ (π.χ. _next) αν τρέξει Jekyll.
+      - run: touch out/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

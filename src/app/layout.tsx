@@ -3,6 +3,7 @@ import { Inter, Roboto_Condensed } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { asset } from "@/lib/asset";
 import { fullAddress, site } from "@/lib/site";
 
 import "./globals.css";
@@ -36,12 +37,13 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/media/og-image.jpg"],
   },
+  // Το basePath δεν εφαρμόζεται αυτόματα στα metadata icons — δείτε lib/asset.
   icons: {
     icon: [
-      { url: "/brand/favicon.svg", type: "image/svg+xml" },
-      { url: "/brand/favicon-32.png", sizes: "32x32" },
+      { url: asset("/brand/favicon.svg"), type: "image/svg+xml" },
+      { url: asset("/brand/favicon-32.png"), sizes: "32x32" },
     ],
-    apple: "/brand/apple-touch-icon.png",
+    apple: asset("/brand/apple-touch-icon.png"),
   },
 };
 

@@ -10,6 +10,7 @@ import {
 
 import { Hero } from "@/components/hero";
 import { Media, Section, SectionHead, SlashRule } from "@/components/ui";
+import { asset } from "@/lib/asset";
 import { gallery, services, site } from "@/lib/site";
 
 const reasons = [
@@ -186,7 +187,7 @@ export default function HomePage() {
           aria-hidden
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: "url(/media/bike-on-lift.jpg)",
+            backgroundImage: `url(${asset("/media/bike-on-lift.jpg")})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

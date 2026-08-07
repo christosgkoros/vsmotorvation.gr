@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from "clsx";
 
+import { asset } from "@/lib/asset";
+
 export function Section({
   id,
   className,
@@ -74,9 +76,9 @@ export function Media({
 }) {
   return (
     <picture className={className}>
-      <source srcSet={`/media/${name}.webp`} type="image/webp" sizes={sizes} />
+      <source srcSet={asset(`/media/${name}.webp`)} type="image/webp" sizes={sizes} />
       <img
-        src={`/media/${name}.jpg`}
+        src={asset(`/media/${name}.jpg`)}
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding={priority ? "sync" : "async"}
