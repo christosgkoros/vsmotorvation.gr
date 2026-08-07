@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-ink-900 text-slate-200 antialiased;
+  }
+
+  ::selection {
+    @apply bg-vs-blue text-white;
+  }
+
+  /* Οι επικεφαλίδες ακολουθούν το λογότυπο: πλάγια, condensed, κεφαλαία. */
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold uppercase italic tracking-tight text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-vs-bright ring-offset-2 ring-offset-ink-900;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8;
+  }
+
+  /* Η διαγώνια κοπή του σήματος, ως μοτίβο του site. */
+  .slash {
+    clip-path: polygon(0.6rem 0, 100% 0, calc(100% - 0.6rem) 100%, 0 100%);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm
+           font-semibold uppercase italic tracking-wide transition
+           disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-primary {
+    @apply btn slash bg-vs-blue text-white hover:bg-vs-bright;
+  }
+
+  .btn-ghost {
+    @apply btn slash border border-white/15 bg-white/5 text-white hover:border-white/35 hover:bg-white/10;
+  }
+
+  .card {
+    @apply border border-white/10 bg-ink-700/70 backdrop-blur;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-vs-bright;
+  }
+
+  .field {
+    @apply w-full border border-white/10 bg-ink-800 px-4 py-3 text-sm text-white
+           placeholder:text-slate-500 focus:border-vs-bright focus:outline-none;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
