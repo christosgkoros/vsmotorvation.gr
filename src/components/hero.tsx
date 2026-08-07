@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 
+import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
 
 export function Hero() {
@@ -14,7 +15,7 @@ export function Hero() {
 
       <div className="shell relative grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
         <div className="animate-fade-up">
-          <p className="eyebrow">Εξειδίκευση σε BMW Motorrad</p>
+          <p className="eyebrow">Service μοτοσυκλέτας — όλες οι μάρκες</p>
 
           <h1 className="mt-4 text-4xl leading-[0.95] sm:text-6xl lg:text-7xl">
             Η μηχανή σου
@@ -59,7 +60,7 @@ export function Hero() {
           <div className="slash relative aspect-[3/4] overflow-hidden bg-ink-700 sm:aspect-[4/5] lg:aspect-[3/4]">
             <video
               className="h-full w-full object-cover"
-              poster="/media/hero-poster.jpg"
+              poster={asset("/media/hero-poster.jpg")}
               autoPlay
               muted
               loop
@@ -67,7 +68,7 @@ export function Hero() {
               preload="metadata"
               aria-label="Μοτοσυκλέτα BMW στον ανυψωτήρα του συνεργείου"
             >
-              <source src="/media/hero.mp4" type="video/mp4" />
+              <source src={asset("/media/hero.mp4")} type="video/mp4" />
             </video>
             <div
               aria-hidden

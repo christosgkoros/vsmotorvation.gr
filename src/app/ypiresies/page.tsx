@@ -8,7 +8,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Υπηρεσίες",
   description:
-    "Service, ηλεκτρονική διάγνωση, φρένα και αναρτήσεις, ελαστικά, εξατμίσεις και upgrades για μοτοσυκλέτες — με έμφαση στη BMW Motorrad.",
+    "Service, ηλεκτρονική διάγνωση, φρένα και αναρτήσεις, ελαστικά, εξατμίσεις και upgrades για μοτοσυκλέτες — όλες οι μάρκες.",
 };
 
 export default function ServicesPage() {

@@ -63,12 +63,12 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div>
             <SlashRule />
-            <h2 className="mt-6 text-3xl sm:text-4xl">Η BMW είναι το σπίτι μας</h2>
+            <h2 className="mt-6 text-3xl sm:text-4xl">Όλες οι μάρκες, μία λογική</h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-400">
               <p>
-                Δουλεύουμε σε όλες τις μάρκες, αλλά η BMW Motorrad είναι εκεί που
-                έχουμε επενδύσει περισσότερο: διαγνωστικά, ειδικά εργαλεία και
-                εμπειρία από S 1000 XR, M 1000 XR και τη σειρά GS.
+                Αναλαμβάνουμε κάθε μάρκα και κατηγορία — από naked και sport
+                μέχρι adventure και scooter. Διαγνωστικά, ειδικά εργαλεία και
+                εμπειρία που καλύπτουν ό,τι μπαίνει στον ανυψωτήρα.
               </p>
               <p>
                 Αυτό σημαίνει ότι δεν μαθαίνουμε πάνω στη μηχανή σου. Ξέρουμε τι
