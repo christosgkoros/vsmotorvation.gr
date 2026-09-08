@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Facebook, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Mail, MapPin, Phone, Star } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
@@ -83,6 +83,21 @@ export default function ContactPage() {
                 <span className="label !mb-0.5">Διεύθυνση</span>
                 <span className="block text-lg text-white transition group-hover:text-vs-bright">
                   {fullAddress()}
+                </span>
+              </span>
+            </a>
+
+            <a
+              href={site.contact.googleBusiness}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="group flex items-start gap-4 border-l-2 border-white/15 pl-5 transition hover:border-vs-bright"
+            >
+              <Star className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+              <span>
+                <span className="label !mb-0.5">Κριτικές</span>
+                <span className="block text-lg text-white transition group-hover:text-vs-bright">
+                  Δες μας στους Χάρτες Google
                 </span>
               </span>
             </a>

@@ -32,11 +32,19 @@ export const site = {
     mapsLink: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
     /** Ακριβείς συντεταγμένες — πάνε στα structured data ως GeoCoordinates. */
     geo: { lat: 37.92085093509815, lng: 23.751000262183094 },
+    /**
+     * Η καταχώρηση στο Google Business Profile, σε μορφή CID.
+     * Προτιμάται από τα maps.app.goo.gl short links, που μπορούν να λήξουν.
+     */
+    googleBusiness: "https://maps.google.com/?cid=2526622629848767503",
   },
 
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61592913626544",
   },
+
+  /** Πότε άνοιξε το συνεργείο (ISO 8601, YYYY-MM). */
+  founded: "2026-07",
 
   /** Ώρες λειτουργίας. `null` = κλειστά. */
   hours: [

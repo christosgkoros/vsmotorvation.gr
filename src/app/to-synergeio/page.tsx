@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone } from "lucide-react";
+import { Phone, Star } from "lucide-react";
 
 import { Breadcrumbs, Media, SlashRule } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
@@ -59,10 +59,11 @@ export default function AboutPage() {
             από την αντιπροσωπεία
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
-            Το {site.name} το άνοιξαν ο Βασίλης Χατζηκωνσταντίνου και ο Στάθης
-            Σάπκας, μετά από χρόνια σε συνεργεία και πάνω από τέσσερα χρόνια
-            στην αντιπροσωπεία της Piaggio. Έφυγαν για να δουλεύουν απευθείας
-            με τον πελάτη — χωρίς τα γρανάζια του μεγάλου συνεργείου ανάμεσα.
+            Το {site.name} άνοιξε τον Ιούλιο του 2026 από τον Βασίλη
+            Χατζηκωνσταντίνου και τον Στάθη Σάπκα, μετά από χρόνια σε συνεργεία
+            και πάνω από τέσσερα χρόνια στην αντιπροσωπεία της Piaggio. Έφυγαν
+            για να δουλεύουν απευθείας με τον πελάτη — χωρίς τα γρανάζια του
+            μεγάλου συνεργείου ανάμεσα.
           </p>
         </div>
       </section>
@@ -102,6 +103,15 @@ export default function AboutPage() {
             παρακάμπτονται. Αυτά τα κρατήσαμε. Αφήσαμε πίσω την αναμονή, τα
             τυποποιημένα πακέτα και το να μη μιλάει κανείς στον πελάτη.
           </p>
+          <a
+            href={site.contact.googleBusiness}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="btn-ghost mt-8"
+          >
+            <Star className="h-4 w-4" aria-hidden />
+            Διάβασε τι λένε οι πελάτες μας
+          </a>
         </div>
       </section>
 

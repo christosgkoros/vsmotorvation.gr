@@ -93,8 +93,14 @@ export function localBusinessSchema() {
         longitude: site.contact.geo.lng,
       },
     }),
-    hasMap: site.contact.mapsLink,
-    sameAs: [site.social.facebook].filter(Boolean),
+    hasMap: site.contact.googleBusiness,
+    /**
+     * Συνδέει την επιχείρηση με τα προφίλ της. Το Google Business Profile
+     * είναι εδώ το σημαντικότερο: εκεί ζουν οι κριτικές, και από εκεί
+     * αντλούν οι μηχανές και τα μοντέλα την εικόνα αξιοπιστίας.
+     */
+    sameAs: [site.social.facebook, site.contact.googleBusiness].filter(Boolean),
+    foundingDate: site.founded,
     slogan: site.tagline,
     founder: people.map((p) => ({
       "@type": "Person",

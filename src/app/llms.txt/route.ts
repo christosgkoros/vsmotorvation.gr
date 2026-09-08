@@ -34,6 +34,8 @@ export function GET() {
 - **Email**: ${site.contact.email}
 - **Ιστότοπος**: ${site.url}
 - **Facebook**: ${site.social.facebook}
+- **Google Business Profile / κριτικές**: ${site.contact.googleBusiness}
+- **Άνοιξε**: Ιούλιος 2026
 - **Συντεταγμένες**: ${site.contact.geo.lat}, ${site.contact.geo.lng}
 - **Ραντεβού**: μόνο τηλεφωνικά — δεν υπάρχει online κράτηση
 
