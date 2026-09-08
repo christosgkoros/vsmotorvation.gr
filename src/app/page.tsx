@@ -141,7 +141,7 @@ export default function HomePage() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
                 {service.summary}
               </p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
+              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-accent">
                 Δες τι περιλαμβάνει
                 <ArrowRight
                   className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
@@ -163,7 +163,7 @@ export default function HomePage() {
               Πες μας τι σε απασχολεί. Αν δεν το κάνουμε εμείς, θα σου πούμε
               ποιος το κάνει σωστά.
             </p>
-            <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
+            <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-accent">
               <Phone className="h-3.5 w-3.5" aria-hidden />
               {site.contact.phoneDisplay}
             </span>
@@ -192,7 +192,7 @@ export default function HomePage() {
           <div className="grid gap-px self-start border border-white/10 bg-white/10 sm:grid-cols-2">
             {reasons.map(({ icon: Icon, title, text }) => (
               <div key={title} className="bg-ink-800 p-7">
-                <Icon className="h-7 w-7 text-vs-bright" aria-hidden />
+                <Icon className="h-7 w-7 text-vs-accent" aria-hidden />
                 <h3 className="mt-5 text-lg not-italic">{title}</h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-slate-400">
                   {text}
@@ -213,7 +213,7 @@ export default function HomePage() {
         <ol className="mt-14 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
             <li key={step.n} className="bg-ink-700 p-7">
-              <span className="font-display text-4xl italic text-vs-blue">
+              <span className="font-display text-4xl italic text-vs-accent">
                 {step.n}
               </span>
               <h3 className="mt-4 text-lg not-italic">{step.title}</h3>
@@ -268,7 +268,7 @@ export default function HomePage() {
                 href={`/periohes/${area.slug}/`}
                 className="slash inline-flex items-center gap-2 border border-white/15 bg-ink-700 px-4 py-2.5 text-sm text-slate-300 transition hover:border-vs-bright hover:text-white"
               >
-                <MapPin className="h-3.5 w-3.5 text-vs-bright" aria-hidden />
+                <MapPin className="h-3.5 w-3.5 text-vs-accent" aria-hidden />
                 {area.name}
               </Link>
             </li>
@@ -276,7 +276,7 @@ export default function HomePage() {
         </ul>
         <Link
           href="/periohes/"
-          className="mt-8 inline-flex items-center gap-1.5 text-sm text-vs-bright underline-offset-4 hover:underline"
+          className="mt-8 inline-flex items-center gap-1.5 py-1.5 text-sm text-vs-accent underline-offset-4 hover:underline"
         >
           Όλες οι περιοχές και οι διαδρομές
           <ArrowRight className="h-4 w-4" aria-hidden />

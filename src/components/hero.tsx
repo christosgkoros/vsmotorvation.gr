@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 
-import { asset } from "@/lib/asset";
+import { HeroVideo } from "@/components/hero-video";
 import { site } from "@/lib/site";
 
 export function Hero() {
@@ -50,7 +50,7 @@ export function Hero() {
               { k: "Ανταλλακτικά", v: "Γνήσια ή ισοδύναμα" },
             ].map((item) => (
               <div key={item.k}>
-                <dt className="text-[0.7rem] font-semibold uppercase tracking-wider text-vs-bright">
+                <dt className="text-[0.7rem] font-semibold uppercase tracking-wider text-vs-accent">
                   {item.k}
                 </dt>
                 <dd className="mt-1.5 text-sm text-slate-300">{item.v}</dd>
@@ -61,18 +61,7 @@ export function Hero() {
 
         <div className="relative">
           <div className="slash relative aspect-[3/4] overflow-hidden bg-ink-700 sm:aspect-[4/5] lg:aspect-[3/4]">
-            <video
-              className="h-full w-full object-cover"
-              poster={asset("/media/hero-poster.jpg")}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Μοτοσυκλέτα BMW στον ανυψωτήρα του συνεργείου"
-            >
-              <source src={asset("/media/hero.mp4")} type="video/mp4" />
-            </video>
+            <HeroVideo label="Μοτοσυκλέτα BMW στον ανυψωτήρα του συνεργείου" />
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent"

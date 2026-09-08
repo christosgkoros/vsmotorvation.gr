@@ -109,17 +109,20 @@ export function Breadcrumbs({
 }) {
   const last = trail.length - 1;
   return (
-    <nav aria-label="Διαδρομή" className="text-xs text-slate-500">
+    <nav aria-label="Διαδρομή" className="text-xs text-slate-400">
       <ol className="flex flex-wrap items-center gap-1.5">
         {trail.map((item, i) => (
           <li key={item.path} className="flex items-center gap-1.5">
             {i === last ? (
-              <span aria-current="page" className="text-slate-400">
+              <span aria-current="page" className="py-1.5 text-slate-400">
                 {item.name}
               </span>
             ) : (
               <>
-                <Link href={item.path} className="transition hover:text-white">
+                <Link
+                  href={item.path}
+                  className="inline-block py-1.5 transition hover:text-white"
+                >
                   {item.name}
                 </Link>
                 <span aria-hidden>/</span>
@@ -130,4 +133,14 @@ export function Breadcrumbs({
       </ol>
     </nav>
   );
+}
+
+/**
+ * Προειδοποίηση ότι ο σύνδεσμος ανοίγει σε νέα καρτέλα.
+ *
+ * Οπτικά αόρατη, αλλά οι αναγνώστες οθόνης τη διαβάζουν. Χωρίς αυτήν, ο
+ * χρήστης βρίσκεται ξαφνικά σε άλλη σελίδα και το «πίσω» δεν δουλεύει.
+ */
+export function NewTab() {
+  return <span className="sr-only"> (ανοίγει σε νέα καρτέλα)</span>;
 }

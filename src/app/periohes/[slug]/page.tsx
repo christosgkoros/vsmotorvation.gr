@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Clock, MapPin, Phone, Route } from "lucide-react";
 import { notFound } from "next/navigation";
 
-import { Breadcrumbs, Media, SlashRule } from "@/components/ui";
+import { Breadcrumbs, Media, NewTab, SlashRule } from "@/components/ui";
 import { areaBySlug, areas } from "@/lib/areas";
 import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
 import { fullAddress, services, site } from "@/lib/site";
@@ -57,14 +57,23 @@ export default async function AreaPage({ params }: Params) {
             {area.for}
           </h1>
 
-          {/* Ρητά, ώστε να μη διαβαστεί η σελίδα σαν υποκατάστημα. */}
+          {/* Ρητά, ώστε να μη διαβαστεί η σελίδα σαν υποκατάστημα.
+              Στην έδρα μας το μήνυμα είναι διαφορετικό — εκεί ΕΙΜΑΣΤΕ. */}
           <p className="mt-5 inline-flex max-w-2xl items-start gap-2.5 border-l-2 border-vs-blue pl-4 text-sm leading-relaxed text-slate-300">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-vs-bright" aria-hidden />
-            <span>
-              Το συνεργείο είναι <strong className="font-semibold text-white">ένα</strong>, στη
-              Λεωφόρο Κυπρίων Ηρώων 73Β στην Ηλιούπολη. Δεν έχουμε υποκατάστημα{" "}
-              {area.in} — απλώς είμαστε κοντά.
-            </span>
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-vs-accent" aria-hidden />
+            {area.minutes === 0 ? (
+              <span>
+                Εδώ είναι η <strong className="font-semibold text-white">έδρα μας</strong>:
+                Λεωφόρος Κυπρίων Ηρώων 73Β, επί της λεωφόρου. Είναι το μοναδικό
+                μας σημείο — δεν έχουμε υποκαταστήματα αλλού.
+              </span>
+            ) : (
+              <span>
+                Το συνεργείο είναι <strong className="font-semibold text-white">ένα</strong>, στη
+                Λεωφόρο Κυπρίων Ηρώων 73Β στην Ηλιούπολη. Δεν έχουμε υποκατάστημα{" "}
+                {area.in} — απλώς είμαστε κοντά.
+              </span>
+            )}
           </p>
 
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
@@ -84,6 +93,7 @@ export default async function AreaPage({ params }: Params) {
             >
               <MapPin className="h-4 w-4" aria-hidden />
               Οδηγίες πρόσβασης
+            <NewTab />
             </a>
           </div>
         </div>
@@ -95,7 +105,9 @@ export default async function AreaPage({ params }: Params) {
           <div>
             <SlashRule />
             <h2 className="mt-6 text-3xl sm:text-4xl">
-              Πώς έρχεστε {area.from}
+              {area.minutes === 0
+                ? `Οι μηχανές ${area.in}`
+                : `Πώς έρχεστε ${area.from}`}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-slate-400">
               {area.local}
@@ -103,21 +115,21 @@ export default async function AreaPage({ params }: Params) {
 
             <dl className="mt-10 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3">
               <div className="bg-ink-800 p-6">
-                <Clock className="h-5 w-5 text-vs-bright" aria-hidden />
+                <Clock className="h-5 w-5 text-vs-accent" aria-hidden />
                 <dt className="label mt-4">Απόσταση από εσάς</dt>
                 <dd className="text-lg text-white">
                   {area.minutes === 0 ? "Είμαστε εδώ" : `~${area.minutes} λεπτά`}
                 </dd>
               </div>
               <div className="bg-ink-800 p-6">
-                <Route className="h-5 w-5 text-vs-bright" aria-hidden />
+                <Route className="h-5 w-5 text-vs-accent" aria-hidden />
                 <dt className="label mt-4">Διαδρομή</dt>
                 <dd className="text-sm leading-relaxed text-slate-300">
                   {area.via}
                 </dd>
               </div>
               <div className="bg-ink-800 p-6">
-                <MapPin className="h-5 w-5 text-vs-bright" aria-hidden />
+                <MapPin className="h-5 w-5 text-vs-accent" aria-hidden />
                 <dt className="label mt-4">Η έδρα μας</dt>
                 <dd className="text-sm leading-relaxed text-slate-300">
                   {fullAddress()}
@@ -147,10 +159,10 @@ export default async function AreaPage({ params }: Params) {
               <li key={service.slug}>
                 <Link
                   href={`/ypiresies/#${service.slug}`}
-                  className="group flex items-start gap-3 text-sm text-slate-300 transition hover:text-white"
+                  className="group flex items-start gap-3 py-1.5 text-sm text-slate-300 transition hover:text-white"
                 >
                   <Check
-                    className="mt-0.5 h-4 w-4 shrink-0 text-vs-bright"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-vs-accent"
                     aria-hidden
                   />
                   {service.title}
@@ -178,7 +190,7 @@ export default async function AreaPage({ params }: Params) {
                 className="group bg-ink-800 p-6 transition hover:bg-ink-700"
               >
                 <h3 className="text-lg not-italic text-white">{n.name}</h3>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
+                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-accent">
                   Πρόσβαση & διαδρομή
                   <ArrowRight
                     className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
@@ -190,7 +202,7 @@ export default async function AreaPage({ params }: Params) {
           </div>
           <Link
             href="/periohes/"
-            className="mt-8 inline-flex items-center gap-1.5 text-sm text-vs-bright underline-offset-4 hover:underline"
+            className="mt-8 inline-flex items-center gap-1.5 py-1.5 text-sm text-vs-accent underline-offset-4 hover:underline"
           >
             Όλες οι περιοχές που εξυπηρετούμε
             <ArrowRight className="h-4 w-4" aria-hidden />

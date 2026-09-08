@@ -29,6 +29,25 @@ export function SiteHeader() {
 
   useEffect(() => setOpen(false), [pathname]);
 
+  /**
+   * Όσο το μενού είναι ανοιχτό: Escape το κλείνει και η σελίδα από κάτω δεν
+   * κυλάει. Χωρίς αυτό, στο κινητό ο χρήστης σκρολάρει «μέσα από» το μενού
+   * και χάνει τη θέση του.
+   */
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
     <header
       className={clsx(
@@ -95,7 +114,7 @@ export function SiteHeader() {
             ))}
             <a
               href={`tel:${site.contact.phone}`}
-              className="inline-flex items-center gap-2 py-3.5 text-sm font-medium text-vs-bright"
+              className="inline-flex items-center gap-2 py-3.5 text-sm font-medium text-vs-accent"
             >
               <Phone className="h-4 w-4" aria-hidden />
               {site.contact.phoneDisplay}

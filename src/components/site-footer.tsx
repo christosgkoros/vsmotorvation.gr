@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Clock, Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 import { Logo } from "@/components/logo";
+import { NewTab } from "@/components/ui";
 import { areas } from "@/lib/areas";
 import { fullAddress, services, site } from "@/lib/site";
 
@@ -22,22 +23,23 @@ export function SiteFooter() {
               href={site.social.facebook}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-5 inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
+              className="mt-4 inline-flex items-center gap-2 py-1.5 text-sm text-slate-400 transition hover:text-white"
             >
               <Facebook className="h-4 w-4" aria-hidden />
               Facebook
+            <NewTab />
             </a>
           )}
         </div>
 
         <div>
-          <h3 className="text-sm not-italic">Υπηρεσίες</h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+          <h2 className="text-sm not-italic">Υπηρεσίες</h2>
+          <ul className="mt-3 text-sm text-slate-400">
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/ypiresies/#${s.slug}`}
-                  className="transition hover:text-white"
+                  className="block py-1.5 transition hover:text-white"
                 >
                   {s.title}
                 </Link>
@@ -47,12 +49,12 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="text-sm not-italic">Επικοινωνία</h3>
-          <ul className="mt-4 space-y-3 text-sm text-slate-400">
+          <h2 className="text-sm not-italic">Επικοινωνία</h2>
+          <ul className="mt-3 text-sm text-slate-400">
             <li>
               <a
                 href={`tel:${site.contact.phone}`}
-                className="inline-flex items-start gap-2.5 transition hover:text-white"
+                className="inline-flex items-start gap-2.5 py-1.5 transition hover:text-white"
               >
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                 {site.contact.phoneDisplay}
@@ -61,7 +63,7 @@ export function SiteFooter() {
             <li>
               <a
                 href={`mailto:${site.contact.email}`}
-                className="inline-flex items-start gap-2.5 transition hover:text-white"
+                className="inline-flex items-start gap-2.5 py-1.5 transition hover:text-white"
               >
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                 {site.contact.email}
@@ -72,47 +74,48 @@ export function SiteFooter() {
                 href={site.contact.mapsLink}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-start gap-2.5 transition hover:text-white"
+                className="inline-flex items-start gap-2.5 py-1.5 transition hover:text-white"
               >
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                 {fullAddress()}
+              <NewTab />
               </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-sm not-italic">Εξυπηρετούμε</h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+          <h2 className="text-sm not-italic">Εξυπηρετούμε</h2>
+          <ul className="mt-3 text-sm text-slate-400">
             {areas.map((area) => (
               <li key={area.slug}>
                 <Link
                   href={`/periohes/${area.slug}/`}
-                  className="transition hover:text-white"
+                  className="block py-1.5 transition hover:text-white"
                 >
                   {area.name}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs leading-relaxed text-slate-600">
+          <p className="mt-4 text-xs leading-relaxed text-slate-400">
             Ένα συνεργείο, στην Ηλιούπολη — χωρίς υποκαταστήματα.
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm not-italic">Ωράριο</h3>
+          <h2 className="text-sm not-italic">Ωράριο</h2>
           <ul className="mt-4 space-y-1.5 text-sm text-slate-400">
             {site.hours.map((h) => (
               <li key={h.day} className="flex justify-between gap-4">
                 <span>{h.day}</span>
-                <span className={h.open ? "" : "text-slate-600"}>
+                <span className={h.open ? "" : "text-slate-400"}>
                   {h.open ? `${h.open}–${h.close}` : "Κλειστά"}
                 </span>
               </li>
             ))}
           </ul>
-          <p className="mt-4 inline-flex items-center gap-2 text-xs text-slate-500">
+          <p className="mt-4 inline-flex items-center gap-2 text-xs text-slate-400">
             <Clock className="h-3.5 w-3.5" aria-hidden />
             Εκτός ωραρίου, κατόπιν τηλεφωνικής συνεννόησης
           </p>
@@ -120,7 +123,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/5">
-        <div className="shell flex flex-col gap-2 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="shell flex flex-col gap-2 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalName}. Με επιφύλαξη παντός δικαιώματος.
           </p>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Facebook, Mail, MapPin, Phone, Star } from "lucide-react";
 
-import { Breadcrumbs } from "@/components/ui";
+import { Breadcrumbs, NewTab } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
 import { fullAddress, site } from "@/lib/site";
 
@@ -34,7 +34,7 @@ export default function ContactPage() {
             της λεωφόρου. Εξυπηρετούμε όλα τα νότια προάστια — δες{" "}
             <Link
               href="/periohes/"
-              className="text-vs-bright underline-offset-4 hover:underline"
+              className="text-vs-accent underline-offset-4 hover:underline"
             >
               πόσο απέχεις από εμάς
             </Link>
@@ -50,10 +50,10 @@ export default function ContactPage() {
               href={`tel:${site.contact.phone}`}
               className="group flex items-start gap-4 border-l-2 border-vs-blue pl-5 transition hover:border-vs-bright"
             >
-              <Phone className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+              <Phone className="mt-1 h-5 w-5 shrink-0 text-vs-accent" aria-hidden />
               <span>
                 <span className="label !mb-0.5">Τηλέφωνο</span>
-                <span className="block text-lg text-white transition group-hover:text-vs-bright">
+                <span className="block text-lg text-white transition group-hover:text-vs-accent">
                   {site.contact.phoneDisplay}
                 </span>
               </span>
@@ -63,10 +63,10 @@ export default function ContactPage() {
               href={`mailto:${site.contact.email}`}
               className="group flex items-start gap-4 border-l-2 border-white/15 pl-5 transition hover:border-vs-bright"
             >
-              <Mail className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+              <Mail className="mt-1 h-5 w-5 shrink-0 text-vs-accent" aria-hidden />
               <span>
                 <span className="label !mb-0.5">Email</span>
-                <span className="block text-lg text-white transition group-hover:text-vs-bright">
+                <span className="block text-lg text-white transition group-hover:text-vs-accent">
                   {site.contact.email}
                 </span>
               </span>
@@ -78,13 +78,14 @@ export default function ContactPage() {
               rel="noreferrer noopener"
               className="group flex items-start gap-4 border-l-2 border-white/15 pl-5 transition hover:border-vs-bright"
             >
-              <MapPin className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-vs-accent" aria-hidden />
               <span>
                 <span className="label !mb-0.5">Διεύθυνση</span>
-                <span className="block text-lg text-white transition group-hover:text-vs-bright">
+                <span className="block text-lg text-white transition group-hover:text-vs-accent">
                   {fullAddress()}
                 </span>
               </span>
+            <NewTab />
             </a>
 
             <a
@@ -93,13 +94,14 @@ export default function ContactPage() {
               rel="noreferrer noopener"
               className="group flex items-start gap-4 border-l-2 border-white/15 pl-5 transition hover:border-vs-bright"
             >
-              <Star className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+              <Star className="mt-1 h-5 w-5 shrink-0 text-vs-accent" aria-hidden />
               <span>
                 <span className="label !mb-0.5">Κριτικές</span>
-                <span className="block text-lg text-white transition group-hover:text-vs-bright">
+                <span className="block text-lg text-white transition group-hover:text-vs-accent">
                   Δες μας στους Χάρτες Google
                 </span>
               </span>
+            <NewTab />
             </a>
 
             {site.social.facebook && (
@@ -109,13 +111,14 @@ export default function ContactPage() {
                 rel="noreferrer noopener"
                 className="group flex items-start gap-4 border-l-2 border-white/15 pl-5 transition hover:border-vs-bright"
               >
-                <Facebook className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+                <Facebook className="mt-1 h-5 w-5 shrink-0 text-vs-accent" aria-hidden />
                 <span>
                   <span className="label !mb-0.5">Facebook</span>
-                  <span className="block text-lg text-white transition group-hover:text-vs-bright">
+                  <span className="block text-lg text-white transition group-hover:text-vs-accent">
                     VS Motorvation
                   </span>
                 </span>
+              <NewTab />
               </a>
             )}
           </div>
@@ -126,7 +129,7 @@ export default function ContactPage() {
               {site.hours.map((h) => (
                 <li key={h.day} className="flex justify-between gap-4 text-slate-300">
                   <span>{h.day}</span>
-                  <span className={h.open ? "font-medium text-white" : "text-slate-600"}>
+                  <span className={h.open ? "font-medium text-white" : "text-slate-400"}>
                     {h.open ? `${h.open} – ${h.close}` : "Κλειστά"}
                   </span>
                 </li>

@@ -35,7 +35,7 @@ export default function ServicesPage() {
             Ηλιούπολη και όλα τα{" "}
             <Link
               href="/periohes/"
-              className="text-vs-bright underline-offset-4 hover:underline"
+              className="text-vs-accent underline-offset-4 hover:underline"
             >
               νότια προάστια
             </Link>
@@ -63,7 +63,7 @@ export default function ServicesPage() {
               <ul className="mt-7 space-y-3">
                 {service.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-3 text-sm text-slate-300">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-vs-bright" aria-hidden />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-vs-accent" aria-hidden />
                     {bullet}
                   </li>
                 ))}
@@ -74,7 +74,7 @@ export default function ServicesPage() {
                   <Phone className="h-4 w-4" aria-hidden />
                   {site.contact.phoneDisplay}
                 </a>
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-slate-400">
                   Ενδεικτικά ~{Math.round(service.minutes / 60)} ώρες στο συνεργείο
                 </span>
               </div>

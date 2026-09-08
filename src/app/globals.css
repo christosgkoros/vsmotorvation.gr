@@ -28,7 +28,16 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-vs-bright ring-offset-2 ring-offset-ink-900;
+    @apply outline-none ring-2 ring-vs-accent ring-offset-2 ring-offset-ink-900;
+  }
+
+  /**
+   * Το clip-path κόβει ΟΛΗ την απόδοση του στοιχείου — και το focus ring.
+   * Στα διαγώνια κουμπιά το δαχτυλίδι έβγαινε αόρατο, δηλαδή δεν φαινόταν
+   * πού βρίσκεται ο χρήστης με πληκτρολόγιο. Το γυρίζουμε προς τα μέσα.
+   */
+  .slash:focus-visible {
+    @apply ring-inset ring-offset-0;
   }
 }
 
@@ -61,12 +70,12 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.22em] text-vs-bright;
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-vs-accent;
   }
 
   .field {
     @apply w-full border border-white/10 bg-ink-800 px-4 py-3 text-sm text-white
-           placeholder:text-slate-500 focus:border-vs-bright focus:outline-none;
+           placeholder:text-slate-400 focus:border-vs-bright focus:outline-none;
   }
 
   .label {

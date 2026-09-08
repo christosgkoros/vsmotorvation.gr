@@ -81,14 +81,14 @@ export default function AreasPage() {
                 <h2 className="text-xl not-italic text-white sm:text-2xl">
                   {area.name}
                 </h2>
-                <span className="shrink-0 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                <span className="shrink-0 text-xs font-semibold uppercase tracking-wider text-slate-400">
                   {area.minutes === 0 ? "η έδρα μας" : `~${area.minutes}′ μακριά`}
                 </span>
               </div>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
                 {area.intro}
               </p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
+              <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-accent">
                 Πρόσβαση & διαδρομή
                 <ArrowRight
                   className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
@@ -111,7 +111,7 @@ export default function AreasPage() {
               Ταύρο, Βούλα, Βουλιαγμένη. Ένα τηλέφωνο και σας λέμε αν σας
               βολεύει η διαδρομή.
             </p>
-            <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
+            <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-accent">
               <Phone className="h-3.5 w-3.5" aria-hidden />
               {site.contact.phoneDisplay}
             </span>

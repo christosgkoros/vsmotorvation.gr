@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Phone, Star } from "lucide-react";
 
-import { Breadcrumbs, Media, SlashRule } from "@/components/ui";
+import { Breadcrumbs, Media, NewTab, SlashRule } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
 import { gallery, people, site } from "@/lib/site";
 
@@ -113,6 +113,7 @@ export default function AboutPage() {
             >
               <Star className="h-4 w-4" aria-hidden />
               Διάβασε τις {site.reviews.count} κριτικές μας
+            <NewTab />
             </a>
             <p className="text-sm text-slate-400">
               <span className="font-semibold text-white">
