@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Clock, Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 import { Logo } from "@/components/logo";
+import { areas } from "@/lib/areas";
 import { fullAddress, services, site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -9,7 +10,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-white/10 bg-ink-800">
-      <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo height={40} />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
@@ -77,6 +78,22 @@ export function SiteFooter() {
                 {fullAddress()}
               </a>
             </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm not-italic">Περιοχές</h3>
+          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+            {areas.map((area) => (
+              <li key={area.slug}>
+                <Link
+                  href={`/periohes/${area.slug}/`}
+                  className="transition hover:text-white"
+                >
+                  {area.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 

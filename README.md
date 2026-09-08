@@ -38,10 +38,14 @@ src/
     ypiresies/            /ypiresies   υπηρεσίες
     to-synergeio/         /to-synergeio  ποιοι είμαστε
     epikoinonia/          /epikoinonia επικοινωνία
+    periohes/             /periohes    περιοχές που εξυπηρετούμε
+      [slug]/             /periohes/glyfada/ κ.λπ. — μία ανά περιοχή
   components/
     site-header.tsx     site-footer.tsx  hero.tsx  logo.tsx  ui.tsx
   lib/
     site.ts             ⭐ όλα τα στοιχεία της επιχείρησης & οι υπηρεσίες
+    areas.ts            ⭐ οι περιοχές — κείμενο, αποστάσεις, διαδρομές
+    seo.tsx             canonical, robots και structured data
 brand/
   build-logo.py         ανακατασκευή λογότυπου από τη φωτογραφία
   build-media.py        εξαγωγή φωτογραφιών/βίντεο από τα κλιπ
@@ -109,6 +113,33 @@ npm run media -- /path/to/videos  # ή αλλού
 
 Δεν έχει αποφασιστεί ακόμη και δεν υπάρχει σήμερα κανένα σημείο σύνδεσης: το
 site είναι καθαρά ενημερωτικό, στατικό, χωρίς backend.
+
+---
+
+## SEO
+
+Στόχος: να βρίσκει το συνεργείο κάποιος που ψάχνει «συνεργείο μοτοσυκλετών»
+σε Ηλιούπολη και νότια προάστια.
+
+**Πού αλλάζει τι**
+
+| Θέλω να… | Αρχείο |
+|---|---|
+| προσθέσω/αλλάξω περιοχή | `src/lib/areas.ts` — φτιάχνει σελίδα, sitemap και `areaServed` μόνο του |
+| αλλάξω τίτλο/περιγραφή σελίδας | το `pageMeta({...})` στην ίδια τη σελίδα |
+| πειράξω τα structured data | `src/lib/seo.tsx` |
+
+**Τα δύο deployments.** Το ίδιο repo ανεβαίνει και στο vsmotorvation.gr
+(Netlify) και στο GitHub Pages. Για να μη μετρήσει η Google δύο φορές το ίδιο
+site, κάθε σελίδα δηλώνει `rel="canonical"` προς το vsmotorvation.gr, και το
+build με `NEXT_PUBLIC_BASE_PATH` (δηλαδή το GitHub Pages) βγαίνει `noindex`.
+Αν κάποια στιγμή σβήσετε το `.github/workflows/deploy.yml`, τίποτα δεν χαλάει.
+
+**Εκκρεμεί εκτός κώδικα**
+
+- Συντεταγμένες στο `site.contact.geo` (τώρα `null`, δείτε το σχόλιο εκεί)
+- Google Search Console: υποβολή του `sitemap.xml`
+- Google Business Profile: κριτικές, φωτογραφίες, υπηρεσίες, posts
 
 ---
 

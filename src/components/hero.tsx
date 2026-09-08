@@ -15,7 +15,9 @@ export function Hero() {
 
       <div className="shell relative grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
         <div className="animate-fade-up">
-          <p className="eyebrow">Service μοτοσυκλέτας — όλες οι μάρκες</p>
+          <p className="eyebrow">
+            Συνεργείο μοτοσυκλετών στην Ηλιούπολη — όλες οι μάρκες
+          </p>
 
           <h1 className="mt-4 text-4xl leading-[0.95] sm:text-6xl lg:text-7xl">
             Η μηχανή σου
@@ -26,7 +28,8 @@ export function Hero() {
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
             Service, διάγνωση και επισκευές από κόσμο που οδηγεί. Σου λέμε τι
             βρήκαμε, τι κοστίζει και τι μπορεί να περιμένει — πριν πιάσουμε
-            κατσαβίδι.
+            κατσαβίδι. Στη Λεωφόρο Κυπρίων Ηρώων 73Β, για όλα τα νότια
+            προάστια.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -42,7 +45,7 @@ export function Hero() {
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
             {[
-              { k: "Ραντεβού", v: "Με ένα τηλέφωνο" },
+              { k: "Πού", v: "Ηλιούπολη, νότια προάστια" },
               { k: "Διάγνωση", v: "Πριν την εργασία" },
               { k: "Ανταλλακτικά", v: "Γνήσια ή ισοδύναμα" },
             ].map((item) => (

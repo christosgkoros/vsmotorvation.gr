@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import clsx from "clsx";
 
 import { asset } from "@/lib/asset";
@@ -97,5 +98,36 @@ export function SlashRule({ className }: { className?: string }) {
       aria-hidden
       className={clsx("h-1 w-16 skew-x-[-20deg] bg-vs-blue", className)}
     />
+  );
+}
+
+/** Breadcrumbs — τα ορατά· το αντίστοιχο schema φτιάχνεται στο lib/seo. */
+export function Breadcrumbs({
+  trail,
+}: {
+  trail: { name: string; path: string }[];
+}) {
+  const last = trail.length - 1;
+  return (
+    <nav aria-label="Διαδρομή" className="text-xs text-slate-500">
+      <ol className="flex flex-wrap items-center gap-1.5">
+        {trail.map((item, i) => (
+          <li key={item.path} className="flex items-center gap-1.5">
+            {i === last ? (
+              <span aria-current="page" className="text-slate-400">
+                {item.name}
+              </span>
+            ) : (
+              <>
+                <Link href={item.path} className="transition hover:text-white">
+                  {item.name}
+                </Link>
+                <span aria-hidden>/</span>
+              </>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 }

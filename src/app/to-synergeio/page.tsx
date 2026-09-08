@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { Phone } from "lucide-react";
 
-import { Media, SlashRule } from "@/components/ui";
+import { Breadcrumbs, Media, SlashRule } from "@/components/ui";
+import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
 import { gallery, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Το συνεργείο",
+export const metadata: Metadata = pageMeta({
+  path: "/to-synergeio/",
+  title: "Το συνεργείο — Μοτοσυκλέτες, Ηλιούπολη",
   description:
-    "Ποιοι είμαστε, πώς δουλεύουμε και γιατί αφήνεις τη μοτοσυκλέτα σου εδώ με ήσυχο το κεφάλι σου.",
-};
+    "Ποιοι είμαστε και πώς δουλεύουμε: συνεργείο μοτοσυκλετών στην Ηλιούπολη για όλες τις μάρκες, με διάγνωση πριν την εργασία και εγγύηση στη δουλειά.",
+});
 
 const values = [
   {
@@ -25,9 +27,15 @@ const values = [
   },
 ];
 
+const trail = [
+  { name: "Αρχική", path: "/" },
+  { name: "Το συνεργείο", path: "/to-synergeio/" },
+];
+
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(trail)} />
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0">
           <Media
@@ -42,8 +50,9 @@ export default function AboutPage() {
             className="absolute inset-0 bg-gradient-to-r from-ink-900 via-ink-900/85 to-ink-900/40"
           />
         </div>
-        <div className="shell relative py-16 sm:py-24">
-          <p className="eyebrow">Το συνεργείο</p>
+        <div className="shell relative py-12 sm:py-24">
+          <Breadcrumbs trail={trail} />
+          <p className="eyebrow mt-6">Το συνεργείο</p>
           <h1 className="mt-3 max-w-3xl text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
             Φτιαγμένο από κόσμο
             <br />
@@ -53,7 +62,7 @@ export default function AboutPage() {
             Το {site.name} ξεκίνησε από μια απλή σκέψη: να υπάρχει ένα μέρος όπου
             αφήνεις τη μηχανή σου και δεν σκέφτεσαι τι θα βρεις όταν γυρίσεις.
             Δουλεύουμε με σεβασμό στη μηχανή και ειλικρίνεια απέναντι στον
-            ιδιοκτήτη της.
+            ιδιοκτήτη της, από τη Λεωφόρο Κυπρίων Ηρώων στην Ηλιούπολη.
           </p>
         </div>
       </section>

@@ -2,27 +2,44 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, Phone } from "lucide-react";
 
-import { Media } from "@/components/ui";
+import { Breadcrumbs, Media } from "@/components/ui";
+import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
 import { services, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Υπηρεσίες",
+export const metadata: Metadata = pageMeta({
+  path: "/ypiresies/",
+  title: "Υπηρεσίες — Service Μηχανής, Διάγνωση, Ελαστικά, ΚΤΕΟ",
   description:
-    "Service, ηλεκτρονική διάγνωση, φρένα και αναρτήσεις, ελαστικά και προέλεγχος ΚΤΕΟ για μοτοσυκλέτες — όλες οι μάρκες.",
-};
+    "Service μοτοσυκλέτας, ηλεκτρονική διάγνωση, φρένα, αναρτήσεις, ελαστικά και προέλεγχος ΚΤΕΟ στην Ηλιούπολη. Όλες οι μάρκες, από scooter μέχρι adventure.",
+});
+
+const trail = [
+  { name: "Αρχική", path: "/" },
+  { name: "Υπηρεσίες", path: "/ypiresies/" },
+];
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(trail)} />
       <section className="border-b border-white/10 bg-ink-800">
-        <div className="shell py-14 sm:py-20">
-          <p className="eyebrow">Τι κάνουμε</p>
-          <h1 className="mt-3 max-w-2xl text-4xl sm:text-5xl lg:text-6xl">
-            Υπηρεσίες
+        <div className="shell py-12 sm:py-20">
+          <Breadcrumbs trail={trail} />
+          <p className="eyebrow mt-6">Τι κάνουμε</p>
+          <h1 className="mt-3 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
+            Υπηρεσίες συνεργείου μοτοσυκλετών
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
             Δεν κάνουμε τα πάντα για όλους. Κάνουμε μοτοσυκλέτα, καλά. Δες τι
-            περιλαμβάνει κάθε δουλειά και τι να περιμένεις.
+            περιλαμβάνει κάθε δουλειά και τι να περιμένεις. Εξυπηρετούμε
+            Ηλιούπολη και όλα τα{" "}
+            <Link
+              href="/periohes/"
+              className="text-vs-bright underline-offset-4 hover:underline"
+            >
+              νότια προάστια
+            </Link>
+            .
           </p>
         </div>
       </section>

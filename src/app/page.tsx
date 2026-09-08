@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Gauge,
+  MapPin,
   MessageSquareText,
   Phone,
   ShieldCheck,
@@ -10,7 +11,9 @@ import {
 
 import { Hero } from "@/components/hero";
 import { Media, Section, SectionHead, SlashRule } from "@/components/ui";
+import { areas } from "@/lib/areas";
 import { asset } from "@/lib/asset";
+import { JsonLd, faqSchema } from "@/lib/seo";
 import { gallery, services, site } from "@/lib/site";
 
 const reasons = [
@@ -56,6 +59,46 @@ const steps = [
     n: "04",
     title: "Παίρνεις τη μηχανή",
     text: "Καθαρή, ελεγμένη και με γραπτό ιστορικό της εργασίας για την επόμενη φορά.",
+  },
+];
+
+/**
+ * Ερωτήσεις που όντως πληκτρολογεί ο κόσμος στη Google.
+ * Το FAQPage schema σπάνια δίνει rich result πλέον (η Google το περιόρισε το
+ * 2023), αλλά το περιεχόμενο πιάνει long-tail και τροφοδοτεί τα AI overviews.
+ */
+const faq = [
+  {
+    q: "Πού βρίσκεται το συνεργείο;",
+    a: "Στη Λεωφόρο Κυπρίων Ηρώων 73Β στην Ηλιούπολη, 163 41, επί της λεωφόρου. Εξυπηρετούμε όλα τα νότια προάστια: Αργυρούπολη, Γλυφάδα, Νέα Σμύρνη, Παλαιό Φάληρο, Άλιμο, Ελληνικό, Παγκράτι, Υμηττό, Νέο Κόσμο, Δάφνη και Βύρωνα.",
+  },
+  {
+    q: "Ποιες μάρκες μοτοσυκλετών αναλαμβάνετε;",
+    a: "Όλες. Από scooter και παπιά μέχρι naked, sport, adventure και custom. Αν για κάποιο μοντέλο δεν είμαστε σίγουροι ότι θα κάνουμε καλή δουλειά, θα σας το πούμε από το τηλέφωνο αντί να το ανακαλύψετε μετά.",
+  },
+  {
+    q: "Πώς κλείνω ραντεβού;",
+    a: "Τηλεφωνικά στο " + site.contact.phoneDisplay + ". Δεν έχουμε online κράτηση επίτηδες: προτιμάμε να ακούσουμε τι σας απασχολεί για να ξέρουμε πόσο χρόνο να κρατήσουμε για τη μηχανή σας.",
+  },
+  {
+    q: "Μαθαίνω το κόστος πριν ξεκινήσει η εργασία;",
+    a: "Πάντα. Κάνουμε πρώτα τον έλεγχο, σας λέμε τι βρήκαμε και τι κοστίζει, και δεν προχωράει τίποτα χωρίς τη δική σας έγκριση.",
+  },
+  {
+    q: "Κάνετε προέλεγχο για ΚΤΕΟ;",
+    a: "Ναι. Περνάμε τη μηχανή από τα σημεία που ελέγχει το ΚΤΕΟ — φώτα, φρένα, ελαστικά, διαρροές, εξάτμιση — και αποκαθιστούμε ό,τι δεν θα περνούσε, ώστε να μη γυρίσετε με σημειώσεις.",
+  },
+  {
+    q: "Τι να φέρω μαζί μου;",
+    a: "Την άδεια κυκλοφορίας και, αν έχετε, το βιβλίο service. Βοηθάει πολύ να ξέρουμε το ιστορικό της μηχανής πριν αρχίσουμε να ψάχνουμε.",
+  },
+  {
+    q: "Πόσο θα μείνει η μηχανή στο συνεργείο;",
+    a: "Εξαρτάται από την εργασία. Στη σελίδα υπηρεσιών υπάρχει ενδεικτικός χρόνος για κάθε δουλειά — από μία ώρα για διάγνωση μέχρι μία ημέρα για πλήρες service.",
+  },
+  {
+    q: "Είστε ανοιχτά Σάββατο;",
+    a: "Όχι. Λειτουργούμε Δευτέρα έως Παρασκευή, 09:00–18:00. Εκτός ωραρίου εξυπηρετούμε κατόπιν τηλεφωνικής συνεννόησης.",
   },
 ];
 
@@ -197,6 +240,54 @@ export default function HomePage() {
             </figure>
           ))}
         </div>
+      </Section>
+
+      {/* ── Περιοχές ──────────────────────────────────────────── */}
+      <Section id="periohes" tone="raised">
+        <SectionHead
+          eyebrow="Πού εξυπηρετούμε"
+          title="Συνεργείο μοτοσυκλετών στα νότια προάστια"
+          intro="Η βάση μας είναι στην Ηλιούπολη, αλλά μας βρίσκουν από όλη τη νότια Αθήνα. Διάλεξε την περιοχή σου για τη διαδρομή και τι προσέχουμε στις μηχανές που έρχονται από εκεί."
+        />
+        <ul className="mt-10 flex flex-wrap gap-2.5">
+          {areas.map((area) => (
+            <li key={area.slug}>
+              <Link
+                href={`/periohes/${area.slug}/`}
+                className="slash inline-flex items-center gap-2 border border-white/15 bg-ink-700 px-4 py-2.5 text-sm text-slate-300 transition hover:border-vs-bright hover:text-white"
+              >
+                <MapPin className="h-3.5 w-3.5 text-vs-bright" aria-hidden />
+                {area.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          href="/periohes/"
+          className="mt-8 inline-flex items-center gap-1.5 text-sm text-vs-bright underline-offset-4 hover:underline"
+        >
+          Όλες οι περιοχές και οι διαδρομές
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
+      </Section>
+
+      {/* ── Συχνές ερωτήσεις ──────────────────────────────────── */}
+      <Section id="syxnes-erotiseis">
+        <JsonLd data={faqSchema(faq)} />
+        <SectionHead
+          eyebrow="Συχνές ερωτήσεις"
+          title="Ό,τι μας ρωτάνε πιο συχνά"
+        />
+        <dl className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
+          {faq.map((item) => (
+            <div key={item.q}>
+              <dt className="font-semibold text-white">{item.q}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-slate-400">
+                {item.a}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </Section>
 
       {/* ── CTA ───────────────────────────────────────────────── */}

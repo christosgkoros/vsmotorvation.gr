@@ -30,6 +30,14 @@ export const site = {
     },
     mapsEmbed: `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`,
     mapsLink: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
+    /**
+     * Ακριβείς συντεταγμένες για τα structured data.
+     *
+     * Αφήστε το `null` όσο δεν τις ξέρετε — λάθος συντεταγμένες είναι χειρότερες
+     * από καθόλου, γιατί έρχονται σε σύγκρουση με το Google Business Profile.
+     * Πάρτε τις με δεξί κλικ στο σημείο μέσα στο Google Maps → «Τι υπάρχει εδώ;».
+     */
+    geo: null as { lat: number; lng: number } | null,
   },
 
   social: {
@@ -131,16 +139,41 @@ export const services: Service[] = [
   },
 ];
 
+/** Τα alt περιγράφουν τι δείχνει η φωτογραφία **και** τι δουλειά γίνεται. */
 export const gallery = [
-  { src: "hero-m1000xr", alt: "BMW M 1000 XR στον ανυψωτήρα του συνεργείου" },
-  { src: "xr-three-quarter", alt: "BMW S 1000 XR έτοιμη για παράδοση" },
-  { src: "exhaust", alt: "Εξάτμιση Akrapovič σε BMW M 1000 XR" },
-  { src: "brakes", alt: "Λεπτομέρεια δαγκάνας φρένου και πιρουνιού" },
-  { src: "workshop", alt: "Δύο BMW σε ανυψωτήρες μέσα στο συνεργείο" },
-  { src: "m-badge", alt: "Σήμα BMW M σε ρεζερβουάρ" },
-  { src: "engine", alt: "Κινητήρας και σύστημα εξαγωγής σε ανυψωτήρα" },
-  { src: "xr-front", alt: "BMW S 1000 XR από μπροστά στον ανυψωτήρα" },
-  { src: "roundel", alt: "Σήμα BMW σε φρεσκοπαραδομένη μοτοσυκλέτα" },
+  {
+    src: "hero-m1000xr",
+    alt: "Μοτοσυκλέτα BMW M 1000 XR σε ανυψωτήρα στο συνεργείο μας στην Ηλιούπολη",
+  },
+  {
+    src: "xr-three-quarter",
+    alt: "BMW S 1000 XR έτοιμη για παράδοση μετά από πλήρες service",
+  },
+  {
+    src: "exhaust",
+    alt: "Έλεγχος εξάτμισης μοτοσυκλέτας στο συνεργείο",
+  },
+  {
+    src: "brakes",
+    alt: "Δαγκάνα φρένου και πιρούνι μοτοσυκλέτας κατά τον έλεγχο φρένων",
+  },
+  {
+    src: "workshop",
+    alt: "Δύο μοτοσυκλέτες σε ανυψωτήρες μέσα στο συνεργείο μοτοσυκλετών",
+  },
+  { src: "m-badge", alt: "Ρεζερβουάρ μοτοσυκλέτας μετά τον καθαρισμό" },
+  {
+    src: "engine",
+    alt: "Κινητήρας μοτοσυκλέτας σε ανυψωτήρα κατά το service",
+  },
+  {
+    src: "xr-front",
+    alt: "Μοτοσυκλέτα από μπροστά στον ανυψωτήρα, για αλλαγή ελαστικών",
+  },
+  {
+    src: "roundel",
+    alt: "Φρεσκοπαραδομένη μοτοσυκλέτα μετά από service στο VS Motorvation",
+  },
 ];
 
 export function fullAddress() {

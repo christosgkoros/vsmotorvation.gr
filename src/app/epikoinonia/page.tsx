@@ -1,21 +1,45 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Facebook, Mail, MapPin, Phone } from "lucide-react";
 
+import { Breadcrumbs } from "@/components/ui";
+import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
 import { fullAddress, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Επικοινωνία",
+export const metadata: Metadata = pageMeta({
+  path: "/epikoinonia/",
+  title: "Επικοινωνία — Λεωφ. Κυπρίων Ηρώων 73Β, Ηλιούπολη",
   description:
-    "Πού θα μας βρεις, πότε είμαστε ανοιχτά και πώς να επικοινωνήσεις με το VS Motorvation.",
-};
+    "Συνεργείο μοτοσυκλετών VS Motorvation: Λεωφ. Κυπρίων Ηρώων 73Β, Ηλιούπολη 163 41. Τηλέφωνο 217 218 0862, ωράριο και χάρτης.",
+});
+
+const trail = [
+  { name: "Αρχική", path: "/" },
+  { name: "Επικοινωνία", path: "/epikoinonia/" },
+];
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(trail)} />
       <section className="border-b border-white/10 bg-ink-800">
-        <div className="shell py-14 sm:py-20">
-          <p className="eyebrow">Επικοινωνία</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl">Πού θα μας βρεις</h1>
+        <div className="shell py-12 sm:py-20">
+          <Breadcrumbs trail={trail} />
+          <p className="eyebrow mt-6">Επικοινωνία</p>
+          <h1 className="mt-3 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
+            Πού θα μας βρεις
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
+            Το συνεργείο είναι στη Λεωφόρο Κυπρίων Ηρώων 73Β στην Ηλιούπολη, επί
+            της λεωφόρου. Εξυπηρετούμε όλα τα νότια προάστια — δες{" "}
+            <Link
+              href="/periohes/"
+              className="text-vs-bright underline-offset-4 hover:underline"
+            >
+              πόσο απέχεις από εμάς
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
