@@ -1,17 +1,16 @@
 /**
  * Κεντρικά στοιχεία του site.
  *
- * ⚠️ ΣΥΜΠΛΗΡΩΣΤΕ ΤΑ ΠΕΔΙΑ ΜΕ TODO πριν το site βγει live.
  * Όλα τα υπόλοιπα αρχεία διαβάζουν από εδώ — δεν χρειάζεται να ψάξετε αλλού.
  */
 
 /** Η διεύθυνση, όπως μπαίνει σε αναζήτηση/χάρτη του Google. */
 const MAPS_QUERY =
-  "%CE%9B%CE%B5%CF%89%CF%86%CF%8C%CF%81%CE%BF%CF%82%20%CE%9A%CF%85%CF%80%CF%81%CE%AF%CF%89%CE%BD%20%CE%97%CF%81%CF%8E%CF%89%CE%BD%2073%CE%92%2C%20%CE%97%CE%BB%CE%B9%CE%BF%CF%8D%CF%80%CE%BF%CE%BB%CE%B7%20163%2045";
+  "%CE%9B%CE%B5%CF%89%CF%86%CF%8C%CF%81%CE%BF%CF%82%20%CE%9A%CF%85%CF%80%CF%81%CE%AF%CF%89%CE%BD%20%CE%97%CF%81%CF%8E%CF%89%CE%BD%2073%CE%92%2C%20%CE%97%CE%BB%CE%B9%CE%BF%CF%8D%CF%80%CE%BF%CE%BB%CE%B7%20163%2041";
 
 export const site = {
   name: "VS Motorvation",
-  legalName: "VS Motorvation", // TODO: πλήρης επωνυμία για το footer/τιμολόγια
+  legalName: "VSMOTOVATION ΟΕ",
   tagline: "Εξειδικευμένο service μοτοσυκλέτας",
   domain: "vsmotorvation.gr",
   url: "https://vsmotorvation.gr",
@@ -22,12 +21,12 @@ export const site = {
     phone: "+302172180862",
     phoneDisplay: "217 218 0862",
     viber: "+302172180862",
-    email: "info@vsmotorvation.gr", // TODO
+    email: "info@vsmotorvation.gr",
     address: {
       street: "Λεωφόρος Κυπρίων Ηρώων 73Β",
       area: "Ηλιούπολη",
       city: "Αθήνα",
-      postal: "163 45",
+      postal: "163 41",
     },
     mapsEmbed: `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`,
     mapsLink: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,

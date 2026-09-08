@@ -21,17 +21,11 @@ hosting ή CDN, χωρίς Node server.
 
 ---
 
-## ⚠️ Πριν βγει live
+## Στοιχεία επιχείρησης
 
-Όλα τα στοιχεία της επιχείρησης είναι σε **ένα** αρχείο: `src/lib/site.ts`.
-Ψάξτε για `TODO`:
-
-- [x] Τηλέφωνο (`contact.phone`, `contact.phoneDisplay`)
-- [ ] Email (`contact.email`)
-- [x] Διεύθυνση (`contact.address`), Google Maps (`mapsEmbed`, `mapsLink`)
-- [x] Facebook (`social.facebook`)
-- [ ] Πλήρης επωνυμία για το footer (`legalName`)
-- [x] Ωράριο (`hours`) — Σάββατο & Κυριακή κλειστά
+Όλα τα στοιχεία της επιχείρησης είναι σε **ένα** αρχείο: `src/lib/site.ts` —
+τηλέφωνο, email, διεύθυνση & χάρτης, Facebook, επωνυμία, ωράριο και οι
+υπηρεσίες. Είναι όλα συμπληρωμένα· αλλάζετε μόνο εκεί.
 
 ---
 
