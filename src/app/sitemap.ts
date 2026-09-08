@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { site } from "@/lib/site";
 
-const routes = ["/", "/ypiresies/", "/to-synergeio/", "/rantevou/", "/epikoinonia/"];
+const routes = ["/", "/ypiresies/", "/to-synergeio/", "/epikoinonia/"];
 
 export const dynamic = "force-static";
 

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check, Phone } from "lucide-react";
 
 import { Media } from "@/components/ui";
-import { services } from "@/lib/site";
+import { services, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Υπηρεσίες",
   description:
-    "Service, ηλεκτρονική διάγνωση, φρένα και αναρτήσεις, ελαστικά, εξατμίσεις και upgrades για μοτοσυκλέτες — όλες οι μάρκες.",
+    "Service, ηλεκτρονική διάγνωση, φρένα και αναρτήσεις, ελαστικά και προέλεγχος ΚΤΕΟ για μοτοσυκλέτες — όλες οι μάρκες.",
 };
 
 export default function ServicesPage() {
@@ -53,10 +53,10 @@ export default function ServicesPage() {
               </ul>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href="/rantevou/" className="btn-primary">
-                  Κλείσε ραντεβού
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
+                <a href={`tel:${site.contact.phone}`} className="btn-primary">
+                  <Phone className="h-4 w-4" aria-hidden />
+                  {site.contact.phoneDisplay}
+                </a>
                 <span className="text-xs text-slate-500">
                   Ενδεικτικά ~{Math.round(service.minutes / 60)} ώρες στο συνεργείο
                 </span>

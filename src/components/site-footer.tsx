@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 import { Logo } from "@/components/logo";
 import { fullAddress, services, site } from "@/lib/site";
@@ -16,15 +16,15 @@ export function SiteFooter() {
             {site.tagline}. Η μηχανή σας φεύγει από εδώ όπως θα θέλαμε να φύγει η δική
             μας.
           </p>
-          {site.social.instagram && (
+          {site.social.facebook && (
             <a
-              href={site.social.instagram}
+              href={site.social.facebook}
               target="_blank"
               rel="noreferrer noopener"
               className="mt-5 inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
             >
-              <Instagram className="h-4 w-4" aria-hidden />
-              Instagram
+              <Facebook className="h-4 w-4" aria-hidden />
+              Facebook
             </a>
           )}
         </div>
@@ -94,7 +94,7 @@ export function SiteFooter() {
           </ul>
           <p className="mt-4 inline-flex items-center gap-2 text-xs text-slate-500">
             <Clock className="h-3.5 w-3.5" aria-hidden />
-            Ραντεβού και εκτός ωραρίου, κατόπιν συνεννόησης
+            Εκτός ωραρίου, κατόπιν τηλεφωνικής συνεννόησης
           </p>
         </div>
       </div>

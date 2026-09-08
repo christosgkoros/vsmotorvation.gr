@@ -63,14 +63,11 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${site.contact.phone}`}
-            className="hidden items-center gap-2 px-3 py-2 text-sm font-medium text-slate-300 transition hover:text-white sm:inline-flex"
+            className="btn-primary !px-4 !py-2.5 text-xs sm:!px-6"
           >
             <Phone className="h-4 w-4" aria-hidden />
             {site.contact.phoneDisplay}
           </a>
-          <Link href="/rantevou/" className="btn-primary !px-4 !py-2.5 text-xs sm:!px-6">
-            Κλείσε ραντεβού
-          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -98,8 +95,9 @@ export function SiteHeader() {
             ))}
             <a
               href={`tel:${site.contact.phone}`}
-              className="py-3.5 text-sm font-medium text-vs-bright"
+              className="inline-flex items-center gap-2 py-3.5 text-sm font-medium text-vs-bright"
             >
+              <Phone className="h-4 w-4" aria-hidden />
               {site.contact.phoneDisplay}
             </a>
           </div>

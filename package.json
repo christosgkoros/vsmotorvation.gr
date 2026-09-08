@@ -2,7 +2,7 @@
   "name": "vsmotorvation-site",
   "version": "0.1.0",
   "private": true,
-  "description": "vsmotorvation.gr — marketing site & online ραντεβού για το VS Motorvation",
+  "description": "vsmotorvation.gr — marketing site για το VS Motorvation",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

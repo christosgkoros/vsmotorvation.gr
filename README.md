@@ -1,7 +1,7 @@
 # vsmotorvation.gr
 
-Marketing site + online ραντεβού για το **VS Motorvation** — συνεργείο
-μοτοσυκλετών για όλες τις μάρκες.
+Marketing site για το **VS Motorvation** — συνεργείο μοτοσυκλετών για όλες τις
+μάρκες. Τα ραντεβού κλείνονται **τηλεφωνικά**· το site δεν έχει φόρμα κράτησης.
 
 Ξεχωριστό project από το [e-Συνεργείο](../synergeio) (το σύστημα διαχείρισης).
 Η σύνδεση των δύο είναι ανοιχτή απόφαση — δείτε [Σύνδεση με e-Συνεργείο](#σύνδεση-με-e-συνεργείο).
@@ -26,15 +26,12 @@ hosting ή CDN, χωρίς Node server.
 Όλα τα στοιχεία της επιχείρησης είναι σε **ένα** αρχείο: `src/lib/site.ts`.
 Ψάξτε για `TODO`:
 
-- [ ] Τηλέφωνο (`contact.phone`, `contact.phoneDisplay`)
+- [x] Τηλέφωνο (`contact.phone`, `contact.phoneDisplay`)
 - [ ] Email (`contact.email`)
-- [ ] Διεύθυνση (`contact.address`)
-- [ ] Google Maps embed (`contact.mapsEmbed`) — αλλιώς η σελίδα επικοινωνίας
-      δείχνει placeholder αντί για χάρτη
-- [ ] Instagram / Facebook (`social`)
+- [x] Διεύθυνση (`contact.address`), Google Maps (`mapsEmbed`, `mapsLink`)
+- [x] Facebook (`social.facebook`)
 - [ ] Πλήρης επωνυμία για το footer (`legalName`)
-- [ ] Ωράριο (`hours`) — τροφοδοτεί και τις διαθέσιμες ώρες στο ραντεβού
-- [ ] Πού πάει το αίτημα ραντεβού (δείτε παρακάτω)
+- [x] Ωράριο (`hours`) — Σάββατο & Κυριακή κλειστά
 
 ---
 
@@ -46,14 +43,11 @@ src/
     page.tsx              /            αρχική
     ypiresies/            /ypiresies   υπηρεσίες
     to-synergeio/         /to-synergeio  ποιοι είμαστε
-    rantevou/             /rantevou    ραντεβού
     epikoinonia/          /epikoinonia επικοινωνία
   components/
-    booking/            ημερολόγιο + φόρμα ραντεβού
     site-header.tsx     site-footer.tsx  hero.tsx  logo.tsx  ui.tsx
   lib/
     site.ts             ⭐ όλα τα στοιχεία της επιχείρησης & οι υπηρεσίες
-    booking.ts          λογική & αποστολή ραντεβού
 brand/
   build-logo.py         ανακατασκευή λογότυπου από τη φωτογραφία
   build-media.py        εξαγωγή φωτογραφιών/βίντεο από τα κλιπ
@@ -114,35 +108,13 @@ npm run media -- /path/to/videos  # ή αλλού
 
 ## Ραντεβού
 
-Ροή: ημερολόγιο → ώρα → στοιχεία → αποστολή.
-
-- Οι διαθέσιμες μέρες βγαίνουν από το `site.hours` (Κυριακές κλειστά).
-- Οι ώρες από το `SLOTS` στο `src/lib/booking.ts`.
-- Παράθυρο κρατήσεων: 60 μέρες (`BOOKING_WINDOW_DAYS`).
-
-**Πού πάει το αίτημα.** Επειδή το site είναι στατικό, χωρίς backend το αίτημα
-ανοίγει ένα προ-συμπληρωμένο email. Για κανονική υποβολή, ορίστε endpoint:
-
-```bash
-# .env.local
-NEXT_PUBLIC_BOOKING_ENDPOINT=https://…/bookings
-```
-
-Δέχεται `POST` με JSON το `BookingRequest`. Τίποτα άλλο στο site δεν αλλάζει.
+Δεν υπάρχει online κράτηση. Κάθε CTA του site οδηγεί σε κλήση στο
+`site.contact.phone` — ο πελάτης παίρνει τηλέφωνο και κλείνει από εκεί.
 
 ### Σύνδεση με e-Συνεργείο
 
-Δεν έχει αποφασιστεί ακόμη. Το σημείο σύνδεσης είναι **μία συνάρτηση**:
-`submitBooking()` στο `src/lib/booking.ts`.
-
-| Επιλογή | Τι χρειάζεται |
-|---|---|
-| Καμία σύνδεση | Ό,τι ισχύει τώρα — email ή τηλέφωνο |
-| Χαλαρή | Endpoint που γράφει το αίτημα στο e-Συνεργείο ως «εκκρεμές ραντεβού» |
-| Πλήρης | Το site διαβάζει και διαθεσιμότητα από το e-Συνεργείο, ώστε να μη δείχνει κλεισμένες ώρες |
-
-Η πλήρης σύνδεση θέλει και ένα `GET /availability?from=&to=` για να γεμίζει το
-ημερολόγιο με πραγματικά δεδομένα αντί για σταθερά slots.
+Δεν έχει αποφασιστεί ακόμη και δεν υπάρχει σήμερα κανένα σημείο σύνδεσης: το
+site είναι καθαρά ενημερωτικό, στατικό, χωρίς backend.
 
 ---
 

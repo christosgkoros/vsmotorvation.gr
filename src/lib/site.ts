@@ -5,6 +5,10 @@
  * Όλα τα υπόλοιπα αρχεία διαβάζουν από εδώ — δεν χρειάζεται να ψάξετε αλλού.
  */
 
+/** Η διεύθυνση, όπως μπαίνει σε αναζήτηση/χάρτη του Google. */
+const MAPS_QUERY =
+  "%CE%9B%CE%B5%CF%89%CF%86%CF%8C%CF%81%CE%BF%CF%82%20%CE%9A%CF%85%CF%80%CF%81%CE%AF%CF%89%CE%BD%20%CE%97%CF%81%CF%8E%CF%89%CE%BD%2073%CE%92%2C%20%CE%97%CE%BB%CE%B9%CE%BF%CF%8D%CF%80%CE%BF%CE%BB%CE%B7%20163%2045";
+
 export const site = {
   name: "VS Motorvation",
   legalName: "VS Motorvation", // TODO: πλήρης επωνυμία για το footer/τιμολόγια
@@ -12,38 +16,35 @@ export const site = {
   domain: "vsmotorvation.gr",
   url: "https://vsmotorvation.gr",
   description:
-    "Συνεργείο μοτοσυκλετών για όλες τις μάρκες. Service, διάγνωση, φρένα, αναρτήσεις, ελαστικά και upgrades — με σεβασμό στη μηχανή σας.",
+    "Συνεργείο μοτοσυκλετών για όλες τις μάρκες. Service, διάγνωση, φρένα, αναρτήσεις, ελαστικά και προέλεγχος ΚΤΕΟ — με σεβασμό στη μηχανή σας.",
 
   contact: {
-    phone: "+30 210 0000000", // TODO
-    phoneDisplay: "210 000 0000", // TODO
-    viber: "+302100000000", // TODO
+    phone: "+302172180862",
+    phoneDisplay: "217 218 0862",
+    viber: "+302172180862",
     email: "info@vsmotorvation.gr", // TODO
     address: {
-      street: "Οδός & αριθμός", // TODO
-      area: "Περιοχή", // TODO
-      city: "Αθήνα", // TODO
-      postal: "000 00", // TODO
+      street: "Λεωφόρος Κυπρίων Ηρώων 73Β",
+      area: "Ηλιούπολη",
+      city: "Αθήνα",
+      postal: "163 45",
     },
-    // TODO: αντικαταστήστε με το πραγματικό embed του Google Maps
-    mapsEmbed: "",
-    mapsLink: "https://maps.google.com/?q=VS+Motorvation",
+    mapsEmbed: `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`,
+    mapsLink: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
   },
 
   social: {
-    instagram: "https://instagram.com/vsmotorvation", // TODO: επιβεβαιώστε
-    facebook: "", // TODO
-    tiktok: "",
+    facebook: "https://www.facebook.com/profile.php?id=61592913626544",
   },
 
-  /** Ώρες λειτουργίας. 0 = Κυριακή. `null` = κλειστά. */
+  /** Ώρες λειτουργίας. `null` = κλειστά. */
   hours: [
     { day: "Δευτέρα", open: "09:00", close: "18:00" },
     { day: "Τρίτη", open: "09:00", close: "18:00" },
     { day: "Τετάρτη", open: "09:00", close: "18:00" },
     { day: "Πέμπτη", open: "09:00", close: "18:00" },
     { day: "Παρασκευή", open: "09:00", close: "18:00" },
-    { day: "Σάββατο", open: "09:00", close: "14:00" },
+    { day: "Σάββατο", open: null, close: null },
     { day: "Κυριακή", open: null, close: null },
   ] as const,
 } as const;
@@ -53,7 +54,7 @@ export type Service = {
   title: string;
   summary: string;
   bullets: string[];
-  /** Ενδεικτική διάρκεια σε λεπτά — χρησιμοποιείται στο ραντεβού. */
+  /** Ενδεικτική διάρκεια σε λεπτά — δείχνεται στη σελίδα υπηρεσιών. */
   minutes: number;
   image?: string;
 };
@@ -116,29 +117,15 @@ export const services: Service[] = [
     image: "xr-front",
   },
   {
-    slug: "upgrades",
-    title: "Εξατμίσεις & upgrades",
+    slug: "proelegchos-kteo",
+    title: "Προέλεγχος ΚΤΕΟ",
     summary:
-      "Από εξάτμιση Akrapovič μέχρι φώτα, βαλίτσες και προστατευτικά — τοποθέτηση σωστά, με τα σωστά ρεύματα και ροπές.",
+      "Πριν πάτε στο επίσημο ΚΤΕΟ, περνάμε τη μηχανή από τα σημεία που ελέγχονται και βεβαιωνόμαστε ότι είναι όλα εντάξει — για να μη γυρίσετε με σημειώσεις.",
     bullets: [
-      "Εξατμίσεις & δεσμίδες",
-      "Προστατευτικά κινητήρα, crash bars",
-      "Φωτισμός, θερμαινόμενα χειρόλαβα",
-      "Σχάρες, βαλίτσες, ζελατίνες",
-    ],
-    minutes: 120,
-    image: "exhaust",
-  },
-  {
-    slug: "proetimasia",
-    title: "Προετοιμασία & φύλαξη",
-    summary:
-      "Έλεγχος πριν από μεγάλο ταξίδι, προετοιμασία ΚΤΕΟ και χειμερινή φύλαξη με συντήρηση μπαταρίας.",
-    bullets: [
-      "Έλεγχος πριν το ταξίδι",
-      "Προετοιμασία για ΚΤΕΟ",
-      "Χειμερινή φύλαξη",
-      "Έλεγχος πριν από αγορά μεταχειρισμένης",
+      "Έλεγχος στα σημεία που κοιτάει το ΚΤΕΟ",
+      "Φώτα, φρένα, ελαστικά, διαρροές, εξάτμιση",
+      "Αποκατάσταση ό,τι δεν θα περνούσε",
+      "Έλεγχος πριν από μεγάλο ταξίδι ή αγορά μεταχειρισμένης",
     ],
     minutes: 90,
     image: "bike-on-lift",

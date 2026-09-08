@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  ClipboardCheck,
   Gauge,
   MessageSquareText,
+  Phone,
   ShieldCheck,
   Wrench,
 } from "lucide-react";
@@ -39,8 +39,8 @@ const reasons = [
 const steps = [
   {
     n: "01",
-    title: "Κλείνεις ραντεβού",
-    text: "Online σε ένα λεπτό ή με ένα τηλέφωνο. Διαλέγεις μέρα και ώρα που σε βολεύει.",
+    title: "Μας παίρνεις τηλέφωνο",
+    text: "Ένα τηλέφωνο αρκεί. Λέμε τι σε απασχολεί και κανονίζουμε μέρα και ώρα που σε βολεύει.",
   },
   {
     n: "02",
@@ -69,7 +69,7 @@ export default function HomePage() {
         <SectionHead
           eyebrow="Τι κάνουμε"
           title="Υπηρεσίες συνεργείου"
-          intro="Από το προγραμματισμένο service μέχρι το upgrade που σκέφτεσαι μήνες. Όλα κάτω από την ίδια στέγη."
+          intro="Από το προγραμματισμένο service μέχρι τον προέλεγχο ΚΤΕΟ. Όλα κάτω από την ίδια στέγη."
         />
 
         <div className="mt-12 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
@@ -95,6 +95,24 @@ export default function HomePage() {
               </span>
             </Link>
           ))}
+
+          <a
+            href={`tel:${site.contact.phone}`}
+            className="group relative flex flex-col bg-ink-700 p-7 transition hover:bg-ink-600"
+          >
+            <SlashRule className="transition-all group-hover:w-24" />
+            <h3 className="mt-5 text-xl not-italic sm:text-2xl">
+              Κάτι άλλο;
+            </h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
+              Πες μας τι σε απασχολεί. Αν δεν το κάνουμε εμείς, θα σου πούμε
+              ποιος το κάνει σωστά.
+            </p>
+            <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
+              <Phone className="h-3.5 w-3.5" aria-hidden />
+              {site.contact.phoneDisplay}
+            </span>
+          </a>
         </div>
       </Section>
 
@@ -194,29 +212,30 @@ export default function HomePage() {
         />
         <div className="shell relative flex flex-col items-start gap-8 py-16 sm:py-20 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
-            <ClipboardCheck className="h-9 w-9 text-white/80" aria-hidden />
+            <Phone className="h-9 w-9 text-white/80" aria-hidden />
             <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl">
-              Κλείσε ραντεβού online
+              Πάρε μας τηλέφωνο
             </h2>
             <p className="mt-4 text-base leading-relaxed text-blue-100">
-              Διάλεξε μέρα και ώρα, πες μας τι μηχανή έχεις και τι σε απασχολεί.
-              Επιβεβαιώνουμε την ίδια μέρα.
+              Πες μας τι μηχανή έχεις και τι σε απασχολεί, και κανονίζουμε πότε
+              θα την περάσεις από το συνεργείο.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link
-              href="/rantevou/"
-              className="btn slash bg-white text-ink-900 hover:bg-slate-100"
-            >
-              Ραντεβού
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
             <a
               href={`tel:${site.contact.phone}`}
-              className="btn slash border border-white/40 text-white hover:bg-white/10"
+              className="btn slash bg-white text-ink-900 hover:bg-slate-100"
             >
+              <Phone className="h-4 w-4" aria-hidden />
               {site.contact.phoneDisplay}
             </a>
+            <Link
+              href="/epikoinonia/"
+              className="btn slash border border-white/40 text-white hover:bg-white/10"
+            >
+              Επικοινωνία
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </div>
         </div>
       </section>

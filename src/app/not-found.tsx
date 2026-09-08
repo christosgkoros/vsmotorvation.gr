@@ -6,14 +6,14 @@ export default function NotFound() {
       <p className="font-display text-7xl italic text-vs-blue">404</p>
       <h1 className="mt-6 text-3xl sm:text-4xl">Η σελίδα δεν βρέθηκε</h1>
       <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
-        Μάλλον πήρες λάθος στροφή. Γύρνα στην αρχική ή κλείσε κατευθείαν ραντεβού.
+        Μάλλον πήρες λάθος στροφή. Γύρνα στην αρχική ή πάρε μας ένα τηλέφωνο.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link href="/" className="btn-primary">
           Αρχική
         </Link>
-        <Link href="/rantevou/" className="btn-ghost">
-          Κλείσε ραντεβού
+        <Link href="/epikoinonia/" className="btn-ghost">
+          Επικοινωνία
         </Link>
       </div>
     </div>

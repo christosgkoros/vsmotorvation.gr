@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { Phone } from "lucide-react";
 
 import { Media, SlashRule } from "@/components/ui";
 import { gallery, site } from "@/lib/site";
@@ -115,13 +114,17 @@ export default function AboutPage() {
           <div>
             <h2 className="text-2xl sm:text-3xl">Έλα να τα πούμε από κοντά</h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
-              Πέρνα από τον χώρο, δες πού θα μπει η μηχανή σου και ρώτησε ό,τι θες.
+              Πάρε ένα τηλέφωνο, πέρνα από τον χώρο, δες πού θα μπει η μηχανή σου
+              και ρώτησε ό,τι θες.
             </p>
           </div>
-          <Link href="/rantevou/" className="btn-primary shrink-0">
-            Κλείσε ραντεβού
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          <a
+            href={`tel:${site.contact.phone}`}
+            className="btn-primary shrink-0"
+          >
+            <Phone className="h-4 w-4" aria-hidden />
+            {site.contact.phoneDisplay}
+          </a>
         </div>
       </section>
     </>

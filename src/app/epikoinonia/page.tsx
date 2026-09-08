@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 import { fullAddress, site } from "@/lib/site";
 
@@ -64,18 +63,18 @@ export default function ContactPage() {
               </span>
             </a>
 
-            {site.social.instagram && (
+            {site.social.facebook && (
               <a
-                href={site.social.instagram}
+                href={site.social.facebook}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="group flex items-start gap-4 border-l-2 border-white/15 pl-5 transition hover:border-vs-bright"
               >
-                <Instagram className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
+                <Facebook className="mt-1 h-5 w-5 shrink-0 text-vs-bright" aria-hidden />
                 <span>
-                  <span className="label !mb-0.5">Instagram</span>
+                  <span className="label !mb-0.5">Facebook</span>
                   <span className="block text-lg text-white transition group-hover:text-vs-bright">
-                    @vsmotorvation
+                    VS Motorvation
                   </span>
                 </span>
               </a>
@@ -99,33 +98,24 @@ export default function ContactPage() {
           <div>
             <h2 className="text-lg not-italic">Θες να έρθεις;</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-400">
-              Κλείσε ραντεβού για να μη σε ταλαιπωρήσουμε με αναμονή.
+              Πάρε πρώτα ένα τηλέφωνο, να κανονίσουμε πότε θα φέρεις τη μηχανή
+              και να μη σε ταλαιπωρήσουμε με αναμονή.
             </p>
-            <Link href="/rantevou/" className="btn-primary mt-5">
-              Κλείσε ραντεβού
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
+            <a href={`tel:${site.contact.phone}`} className="btn-primary mt-5">
+              <Phone className="h-4 w-4" aria-hidden />
+              {site.contact.phoneDisplay}
+            </a>
           </div>
         </div>
 
         <div className="min-h-[24rem] border border-white/10 bg-ink-700">
-          {site.contact.mapsEmbed ? (
-            <iframe
-              src={site.contact.mapsEmbed}
-              title={`Χάρτης — ${site.name}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="h-full min-h-[24rem] w-full"
-            />
-          ) : (
-            <div className="flex h-full min-h-[24rem] flex-col items-center justify-center gap-4 p-8 text-center">
-              <MapPin className="h-10 w-10 text-slate-600" aria-hidden />
-              <p className="max-w-xs text-sm text-slate-500">
-                Ο χάρτης μπαίνει μόλις οριστικοποιηθεί η διεύθυνση.
-                {/* TODO: βάλτε το embed URL στο src/lib/site.ts → contact.mapsEmbed */}
-              </p>
-            </div>
-          )}
+          <iframe
+            src={site.contact.mapsEmbed}
+            title={`Χάρτης — ${site.name}`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-full min-h-[24rem] w-full"
+          />
         </div>
       </div>
     </>

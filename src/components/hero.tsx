@@ -24,25 +24,25 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-            Service, διάγνωση και upgrades από κόσμο που οδηγεί. Σου λέμε τι
+            Service, διάγνωση και επισκευές από κόσμο που οδηγεί. Σου λέμε τι
             βρήκαμε, τι κοστίζει και τι μπορεί να περιμένει — πριν πιάσουμε
             κατσαβίδι.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/rantevou/" className="btn-primary">
-              Κλείσε ραντεβού
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-            <a href={`tel:${site.contact.phone}`} className="btn-ghost">
+            <a href={`tel:${site.contact.phone}`} className="btn-primary">
               <Phone className="h-4 w-4" aria-hidden />
               {site.contact.phoneDisplay}
             </a>
+            <Link href="/ypiresies/" className="btn-ghost">
+              Δες τις υπηρεσίες
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
             {[
-              { k: "Ραντεβού", v: "Online, σε 1 λεπτό" },
+              { k: "Ραντεβού", v: "Με ένα τηλέφωνο" },
               { k: "Διάγνωση", v: "Πριν την εργασία" },
               { k: "Ανταλλακτικά", v: "Γνήσια ή ισοδύναμα" },
             ].map((item) => (
