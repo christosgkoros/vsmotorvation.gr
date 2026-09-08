@@ -133,10 +133,24 @@ site είναι καθαρά ενημερωτικό, στατικό, χωρίς 
 **Canonical.** Κάθε σελίδα δηλώνει `rel="canonical"` προς το vsmotorvation.gr,
 ώστε www/non-www και URLs με `utm_*` ή `fbclid` να μετράνε ως ένα.
 
+**AI crawlers (ChatGPT, Gemini, Claude, Copilot, Perplexity)**
+
+- `public/robots.txt` επιτρέπει ρητά GPTBot, OAI-SearchBot, Google-Extended,
+  ClaudeBot, PerplexityBot, Applebot-Extended κ.λπ.
+- `/llms.txt` (από `src/app/llms.txt/route.ts`) — σύνοψη σε markdown,
+  παραγόμενη από τα ίδια δεδομένα με το site. Πρόταση προτύπου, όχι κάτι που
+  διαβάζει σίγουρα κάποιος· κοστίζει μηδέν και δεν ξεσυγχρονίζεται.
+- Το site είναι στατικό HTML χωρίς client-side rendering — οι crawlers των
+  μοντέλων συνήθως **δεν** εκτελούν JavaScript, οπότε αυτό μετράει
+  περισσότερο από κάθε άλλη ρύθμιση εδώ.
+- `max-snippet:-1` ώστε να μην κόβονται τα αποσπάσματα.
+
 **Εκκρεμεί εκτός κώδικα**
 
 - Google Search Console: υποβολή του `sitemap.xml`
 - Google Business Profile: κριτικές, φωτογραφίες, υπηρεσίες, posts
+- `AggregateRating` στα structured data — **μόνο** με πραγματικές κριτικές.
+  Επινοημένες βαθμολογίες είναι παράβαση των οδηγιών και επισύρουν ποινή.
 
 ---
 

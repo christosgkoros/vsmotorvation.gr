@@ -1,4 +1,77 @@
+# vsmotorvation.gr
+#
+# Όλα τα crawlers είναι ευπρόσδεκτα, συμπεριλαμβανομένων εκείνων που
+# τροφοδοτούν ChatGPT, Gemini, Claude, Copilot και Perplexity. Οι ομάδες
+# είναι γραμμένες ρητά επειδή ένα robots.txt εφαρμόζει στο κάθε bot ΜΟΝΟ
+# την πιο συγκεκριμένη ομάδα που ταιριάζει — ένα σκέτο `User-agent: *`
+# δουλεύει σήμερα, αλλά χάνεται μόλις προστεθεί οποιοσδήποτε περιορισμός.
+
 User-agent: *
+Allow: /
+
+# ── OpenAI ──────────────────────────────────────────────
+# GPTBot: εκπαίδευση.  OAI-SearchBot: ευρετήριο του ChatGPT Search.
+# ChatGPT-User: όταν ο χρήστης ζητά ρητά να ανοίξει τη σελίδα.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ── Google ──────────────────────────────────────────────
+# Το Google-Extended δεν είναι crawler: ελέγχει αν το ήδη σαρωμένο
+# περιεχόμενο μπορεί να χρησιμοποιηθεί από το Gemini και τα AI Overviews.
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# ── Anthropic ───────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ── Microsoft Copilot / Bing ────────────────────────────
+User-agent: bingbot
+Allow: /
+
+# ── Perplexity ──────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ── Apple Intelligence / Siri ───────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Άλλα ────────────────────────────────────────────────
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
 Allow: /
 
 Sitemap: https://vsmotorvation.gr/sitemap.xml

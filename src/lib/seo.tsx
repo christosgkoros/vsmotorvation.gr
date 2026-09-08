@@ -95,6 +95,30 @@ export function localBusinessSchema() {
     }),
     hasMap: site.contact.mapsLink,
     sameAs: [site.social.facebook].filter(Boolean),
+    slogan: site.tagline,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: site.contact.phone,
+      email: site.contact.email,
+      availableLanguage: ["el", "Greek"],
+      areaServed: "GR",
+    },
+    /**
+     * Δηλώνει σε τι είναι αρμόδια η επιχείρηση. Βοηθάει τα μοντέλα να τη
+     * συνδέσουν με ερωτήσεις τύπου «ποιος κάνει προέλεγχο ΚΤΕΟ σε μηχανή».
+     */
+    knowsAbout: [
+      "Service μοτοσυκλέτας",
+      "Συντήρηση μοτοσυκλετών",
+      "Ηλεκτρονική διάγνωση μοτοσυκλέτας",
+      "Φρένα μοτοσυκλέτας",
+      "Αναρτήσεις μοτοσυκλέτας",
+      "Ελαστικά μοτοσυκλέτας και ζυγοστάθμιση",
+      "Προέλεγχος ΚΤΕΟ μοτοσυκλέτας",
+      "Επισκευή scooter",
+      "Επισκευή παπιού",
+    ],
     areaServed: areaNames.map((name) => ({
       "@type": "City",
       name,
@@ -123,6 +147,23 @@ export function localBusinessSchema() {
         },
       })),
     },
+  };
+}
+
+/**
+ * Το WebSite δένει το domain με την επιχείρηση. Χωρίς αυτό, μια μηχανή
+ * αναζήτησης βλέπει «ένα site» και «μια επιχείρηση» χωρίς ρητή σχέση.
+ */
+export function webSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    url: site.url,
+    name: site.name,
+    description: site.description,
+    inLanguage: "el-GR",
+    publisher: { "@id": BUSINESS_ID },
   };
 }
 

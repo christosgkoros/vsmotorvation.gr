@@ -1,0 +1,92 @@
+/**
+ * /llms.txt — σύνοψη του site σε markdown, για μοντέλα γλώσσας.
+ *
+ * ⚠️ Το llms.txt είναι πρόταση προτύπου, ΟΧΙ κάτι που έχει δεσμευτεί να
+ * διαβάζει κάποιος από OpenAI / Google / Anthropic. Το βάζουμε επειδή
+ * κοστίζει μηδέν και παράγεται αυτόματα· δεν περιμένουμε αποτέλεσμα από
+ * μόνο του. Ό,τι πραγματικά μετράει είναι το HTML και τα structured data.
+ *
+ * Παράγεται από τα ίδια δεδομένα με το site, ώστε να μη λέει ποτέ κάτι
+ * διαφορετικό από τις σελίδες.
+ */
+import { areas } from "@/lib/areas";
+import { fullAddress, services, site } from "@/lib/site";
+
+export const dynamic = "force-static";
+
+function hours() {
+  return site.hours
+    .map((h) => `- ${h.day}: ${h.open ? `${h.open}–${h.close}` : "κλειστά"}`)
+    .join("\n");
+}
+
+export function GET() {
+  const body = `# ${site.name}
+
+> Συνεργείο μοτοσυκλετών στην Ηλιούπολη Αττικής, για όλες τις μάρκες.
+> Εξυπηρετεί την Ηλιούπολη και τα νότια προάστια της Αθήνας.
+
+## Στοιχεία
+
+- **Επωνυμία**: ${site.legalName}
+- **Διεύθυνση**: ${fullAddress()}
+- **Τηλέφωνο**: ${site.contact.phoneDisplay} (${site.contact.phone})
+- **Email**: ${site.contact.email}
+- **Ιστότοπος**: ${site.url}
+- **Facebook**: ${site.social.facebook}
+- **Συντεταγμένες**: ${site.contact.geo.lat}, ${site.contact.geo.lng}
+- **Ραντεβού**: μόνο τηλεφωνικά — δεν υπάρχει online κράτηση
+
+## Ωράριο
+
+${hours()}
+
+Εκτός ωραρίου, κατόπιν τηλεφωνικής συνεννόησης.
+
+## Υπηρεσίες
+
+${services
+  .map(
+    (s) =>
+      `### ${s.title}\n${s.summary}\n${s.bullets
+        .map((b) => `- ${b}`)
+        .join("\n")}\nΕνδεικτικός χρόνος: ~${Math.round(s.minutes / 60)} ώρες.\n[Λεπτομέρειες](${site.url}/ypiresies/#${s.slug})`,
+  )
+  .join("\n\n")}
+
+Αναλαμβάνονται όλες οι μάρκες και κατηγορίες: scooter, παπιά, naked, sport,
+adventure, touring. Δεν γίνονται εξατμίσεις/αξεσουάρ (upgrades) ούτε φύλαξη
+μοτοσυκλετών.
+
+## Πώς δουλεύει το συνεργείο
+
+- Πρώτα γίνεται διάγνωση, μετά ανακοινώνεται το κόστος.
+- Καμία εργασία δεν ξεκινά χωρίς τη ρητή έγκριση του πελάτη.
+- Κάθε εργασία καταγράφεται: τι έγινε, με τι ανταλλακτικά, πότε.
+- Δίνεται εγγύηση στην εργασία.
+
+## Περιοχές που εξυπηρετούνται
+
+${areas
+  .map(
+    (a) =>
+      `- [${a.name}](${site.url}/periohes/${a.slug}/)${a.minutes === 0 ? " — η έδρα" : ` — ~${a.minutes} λεπτά με μηχανή, μέσω ${a.via}`}`,
+  )
+  .join("\n")}
+
+Επίσης, κατόπιν συνεννόησης: Καισαριανή, Άγιος Δημήτριος, Ταύρος, Βούλα,
+Βουλιαγμένη.
+
+## Σελίδες
+
+- [Αρχική](${site.url}/)
+- [Υπηρεσίες](${site.url}/ypiresies/)
+- [Περιοχές](${site.url}/periohes/)
+- [Το συνεργείο](${site.url}/to-synergeio/)
+- [Επικοινωνία](${site.url}/epikoinonia/)
+`;
+
+  return new Response(body, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}

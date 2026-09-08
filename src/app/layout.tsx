@@ -4,7 +4,12 @@ import { Inter, Roboto_Condensed } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { asset } from "@/lib/asset";
-import { JsonLd, canonical, localBusinessSchema } from "@/lib/seo";
+import {
+  JsonLd,
+  canonical,
+  localBusinessSchema,
+  webSiteSchema,
+} from "@/lib/seo";
 import { fullAddress, site } from "@/lib/site";
 
 import "./globals.css";
@@ -31,7 +36,22 @@ export const metadata: Metadata = {
   },
   description: site.description,
   alternates: { canonical: canonical("/") },
-  robots: { index: true, follow: true },
+  /**
+   * Χωρίς τα max-* όρια, η Google κόβει τα snippets σε ~160 χαρακτήρες.
+   * Τα AI Overviews και οι απαντήσεις των μοντέλων δουλεύουν καλύτερα όταν
+   * επιτρέπεται ολόκληρο το απόσπασμα και μεγάλη εικόνα.
+   */
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "el_GR",
@@ -71,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <SiteFooter />
         <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={webSiteSchema()} />
         <meta itemProp="address" content={fullAddress()} />
       </body>
     </html>
