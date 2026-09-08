@@ -3,13 +3,13 @@ import { Phone } from "lucide-react";
 
 import { Breadcrumbs, Media, SlashRule } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, pageMeta } from "@/lib/seo";
-import { gallery, site } from "@/lib/site";
+import { gallery, people, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   path: "/to-synergeio/",
-  title: "Το συνεργείο — Μοτοσυκλέτες, Ηλιούπολη",
+  title: "Το συνεργείο — Οι μηχανικοί πίσω από το VS Motorvation",
   description:
-    "Ποιοι είμαστε και πώς δουλεύουμε: συνεργείο μοτοσυκλετών στην Ηλιούπολη για όλες τις μάρκες, με διάγνωση πριν την εργασία και εγγύηση στη δουλειά.",
+    "Ο Βασίλης Χατζηκωνσταντίνου και ο Στάθης Σάπκας, με πάνω από 4 χρόνια στην αντιπροσωπεία της Piaggio, άνοιξαν συνεργείο μοτοσυκλετών στην Ηλιούπολη.",
 });
 
 const values = [
@@ -54,15 +54,53 @@ export default function AboutPage() {
           <Breadcrumbs trail={trail} />
           <p className="eyebrow mt-6">Το συνεργείο</p>
           <h1 className="mt-3 max-w-3xl text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
-            Φτιαγμένο από κόσμο
+            Δύο μηχανικοί
             <br />
-            που οδηγεί
+            από την αντιπροσωπεία
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
-            Το {site.name} ξεκίνησε από μια απλή σκέψη: να υπάρχει ένα μέρος όπου
-            αφήνεις τη μηχανή σου και δεν σκέφτεσαι τι θα βρεις όταν γυρίσεις.
-            Δουλεύουμε με σεβασμό στη μηχανή και ειλικρίνεια απέναντι στον
-            ιδιοκτήτη της, από τη Λεωφόρο Κυπρίων Ηρώων στην Ηλιούπολη.
+            Το {site.name} το άνοιξαν ο Βασίλης Χατζηκωνσταντίνου και ο Στάθης
+            Σάπκας, μετά από χρόνια σε συνεργεία και πάνω από τέσσερα χρόνια
+            στην αντιπροσωπεία της Piaggio. Έφυγαν για να δουλεύουν απευθείας
+            με τον πελάτη — χωρίς τα γρανάζια του μεγάλου συνεργείου ανάμεσα.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Ποιοι είμαστε ─────────────────────────────────────── */}
+      <section className="border-b border-white/10 bg-ink-800">
+        <div className="shell py-14 sm:py-20">
+          <p className="eyebrow">Ποιοι είμαστε</p>
+          <h2 className="mt-3 max-w-2xl text-3xl sm:text-4xl">
+            Θα σου μιλήσει αυτός που θα πιάσει τη μηχανή
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
+            Στα μεγάλα συνεργεία μιλάς με την υποδοχή, η μηχανή πάει πίσω και
+            κάποιος που δεν είδες ποτέ αποφασίζει τι θα γίνει. Εδώ είμαστε δύο
+            άτομα: αυτός που σε ακούει είναι αυτός που θα δουλέψει.
+          </p>
+
+          <dl className="mt-10 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2">
+            {people.map((person) => (
+              <div key={person.name} className="bg-ink-900 p-7">
+                <dt>
+                  <span className="font-display text-xl font-bold uppercase italic text-white sm:text-2xl">
+                    {person.name}
+                  </span>
+                  <span className="label mt-2 block">{person.role}</span>
+                </dt>
+                <dd className="mt-3 text-sm leading-relaxed text-slate-400">
+                  {person.bio}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-slate-400">
+            Η εμπειρία στην αντιπροσωπεία σημαίνει δουλειά με προδιαγραφές
+            κατασκευαστή, επίσημα διαγνωστικά και διαδικασίες που δεν
+            παρακάμπτονται. Αυτά τα κρατήσαμε. Αφήσαμε πίσω την αναμονή, τα
+            τυποποιημένα πακέτα και το να μη μιλάει κανείς στον πελάτη.
           </p>
         </div>
       </section>

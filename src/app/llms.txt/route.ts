@@ -10,7 +10,7 @@
  * διαφορετικό από τις σελίδες.
  */
 import { areas } from "@/lib/areas";
-import { fullAddress, services, site } from "@/lib/site";
+import { fullAddress, people, services, site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -57,6 +57,14 @@ ${services
 Αναλαμβάνονται όλες οι μάρκες και κατηγορίες: scooter, παπιά, naked, sport,
 adventure, touring. Δεν γίνονται εξατμίσεις/αξεσουάρ (upgrades) ούτε φύλαξη
 μοτοσυκλετών.
+
+## Ποιοι το λειτουργούν
+
+${people.map((p) => `- **${p.name}** — ${p.role}. ${p.bio}`).join("\n")}
+
+Το συνεργείο το άνοιξαν οι δύο μηχανικοί αφού έφυγαν από την αντιπροσωπεία,
+ώστε να εξυπηρετούν απευθείας τον πελάτη χωρίς τις δυσκολίες ενός μεγάλου
+συνεργείου. Η μηχανή δουλεύεται από τον ίδιο που μιλάει με τον ιδιοκτήτη.
 
 ## Πώς δουλεύει το συνεργείο
 

@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 
 import { site } from "@/lib/site";
 import { areas, areaNames } from "@/lib/areas";
-import { services } from "@/lib/site";
+import { people, services } from "@/lib/site";
 
 export function canonical(path: string): string {
   return new URL(path, site.url).toString();
@@ -96,6 +96,18 @@ export function localBusinessSchema() {
     hasMap: site.contact.mapsLink,
     sameAs: [site.social.facebook].filter(Boolean),
     slogan: site.tagline,
+    founder: people.map((p) => ({
+      "@type": "Person",
+      name: p.name,
+      jobTitle: p.role,
+      description: p.bio,
+      worksFor: { "@id": BUSINESS_ID },
+    })),
+    employee: people.map((p) => ({
+      "@type": "Person",
+      name: p.name,
+      jobTitle: p.role,
+    })),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
