@@ -4,7 +4,7 @@ import { Inter, Roboto_Condensed } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { asset } from "@/lib/asset";
-import { JsonLd, canonical, localBusinessSchema, mirrorRobots } from "@/lib/seo";
+import { JsonLd, canonical, localBusinessSchema } from "@/lib/seo";
 import { fullAddress, site } from "@/lib/site";
 
 import "./globals.css";
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   alternates: { canonical: canonical("/") },
-  robots: mirrorRobots,
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     locale: "el_GR",

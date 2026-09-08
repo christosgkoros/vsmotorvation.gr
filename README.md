@@ -17,7 +17,8 @@ npm run build      # στατικό export στο out/
 ```
 
 Το site είναι **στατικό** (`output: "export"`) — ανεβαίνει σε οποιοδήποτε
-hosting ή CDN, χωρίς Node server.
+hosting ή CDN, χωρίς Node server. Το production τρέχει στο **Netlify**, με
+auto-deploy σε κάθε push στο `main`.
 
 ---
 
@@ -129,15 +130,11 @@ site είναι καθαρά ενημερωτικό, στατικό, χωρίς 
 | αλλάξω τίτλο/περιγραφή σελίδας | το `pageMeta({...})` στην ίδια τη σελίδα |
 | πειράξω τα structured data | `src/lib/seo.tsx` |
 
-**Τα δύο deployments.** Το ίδιο repo ανεβαίνει και στο vsmotorvation.gr
-(Netlify) και στο GitHub Pages. Για να μη μετρήσει η Google δύο φορές το ίδιο
-site, κάθε σελίδα δηλώνει `rel="canonical"` προς το vsmotorvation.gr, και το
-build με `NEXT_PUBLIC_BASE_PATH` (δηλαδή το GitHub Pages) βγαίνει `noindex`.
-Αν κάποια στιγμή σβήσετε το `.github/workflows/deploy.yml`, τίποτα δεν χαλάει.
+**Canonical.** Κάθε σελίδα δηλώνει `rel="canonical"` προς το vsmotorvation.gr,
+ώστε www/non-www και URLs με `utm_*` ή `fbclid` να μετράνε ως ένα.
 
 **Εκκρεμεί εκτός κώδικα**
 
-- Συντεταγμένες στο `site.contact.geo` (τώρα `null`, δείτε το σχόλιο εκεί)
 - Google Search Console: υποβολή του `sitemap.xml`
 - Google Business Profile: κριτικές, φωτογραφίες, υπηρεσίες, posts
 

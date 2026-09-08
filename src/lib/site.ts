@@ -30,14 +30,8 @@ export const site = {
     },
     mapsEmbed: `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`,
     mapsLink: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
-    /**
-     * Ακριβείς συντεταγμένες για τα structured data.
-     *
-     * Αφήστε το `null` όσο δεν τις ξέρετε — λάθος συντεταγμένες είναι χειρότερες
-     * από καθόλου, γιατί έρχονται σε σύγκρουση με το Google Business Profile.
-     * Πάρτε τις με δεξί κλικ στο σημείο μέσα στο Google Maps → «Τι υπάρχει εδώ;».
-     */
-    geo: null as { lat: number; lng: number } | null,
+    /** Ακριβείς συντεταγμένες — πάνε στα structured data ως GeoCoordinates. */
+    geo: { lat: 37.92085093509815, lng: 23.751000262183094 },
   },
 
   social: {

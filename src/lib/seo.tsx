@@ -1,21 +1,16 @@
 /**
  * SEO helpers: canonical URLs, robots και structured data.
  *
- * ── Γιατί υπάρχει το canonical ──────────────────────────────────────────
- * Το ίδιο repo ανεβαίνει σε δύο σημεία: στο vsmotorvation.gr (Netlify) και
- * στο GitHub Pages. Χωρίς canonical, η Google βλέπει δύο πανομοιότυπα sites
- * και μοιράζει την αξία ανάμεσά τους. Όλες οι σελίδες δηλώνουν ρητά ότι το
- * πρωτότυπο είναι στο vsmotorvation.gr, και το αντίγραφο του GitHub Pages
- * βγαίνει `noindex` (δείτε `isMirror`).
+ * Το canonical δηλώνει ρητά ότι κάθε σελίδα ζει στο vsmotorvation.gr. Το
+ * κρατάμε ακόμη κι όταν το site ανεβαίνει σε ένα μόνο σημείο: προστατεύει
+ * από www/non-www, από URLs με query parameters (utm_*, fbclid) και από
+ * τυχόν preview deployments.
  */
 import type { Metadata } from "next";
 
 import { site } from "@/lib/site";
 import { areas, areaNames } from "@/lib/areas";
 import { services } from "@/lib/site";
-
-/** Το build του GitHub Pages τρέχει με basePath — είναι το αντίγραφο. */
-const isMirror = Boolean(process.env.NEXT_PUBLIC_BASE_PATH);
 
 export function canonical(path: string): string {
   return new URL(path, site.url).toString();
@@ -43,15 +38,8 @@ export function pageMeta({
       description,
       url: canonical(path),
     },
-    // Το αντίγραφο δεν πρέπει να μπει στο index, αλλά τα links του μετράνε.
-    robots: isMirror ? { index: false, follow: true } : undefined,
   };
 }
-
-/** Το `robots` του layout — μόνο το αντίγραφο περιορίζεται. */
-export const mirrorRobots: Metadata["robots"] = isMirror
-  ? { index: false, follow: true }
-  : { index: true, follow: true };
 
 /** Αγγλικά ονόματα ημερών: το schema.org δεν δέχεται «Δευτέρα». */
 const SCHEMA_DAYS: Record<string, string> = {
