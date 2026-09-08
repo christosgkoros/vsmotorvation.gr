@@ -10,7 +10,7 @@ const MAPS_QUERY =
 
 export const site = {
   name: "VS Motorvation",
-  legalName: "VSMOTOVATION ΟΕ",
+  legalName: "VSMOTORVATION ΟΕ",
   tagline: "Εξειδικευμένο service μοτοσυκλέτας",
   domain: "vsmotorvation.gr",
   url: "https://vsmotorvation.gr",
