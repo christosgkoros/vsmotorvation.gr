@@ -101,6 +101,20 @@ export function localBusinessSchema() {
      */
     sameAs: [site.social.facebook, site.contact.googleBusiness].filter(Boolean),
     foundingDate: site.founded,
+    /**
+     * Πραγματικά νούμερα από το Google Business Profile — δείτε site.reviews.
+     * Η Google δεν εμφανίζει αστεράκια από self-serving markup σε
+     * LocalBusiness· μπαίνει επειδή το διαβάζουν τα μοντέλα και επειδή
+     * περιγράφει αληθινά την επιχείρηση.
+     */
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: site.reviews.rating,
+      reviewCount: site.reviews.count,
+      bestRating: 5,
+      worstRating: 1,
+      url: site.contact.googleBusiness,
+    },
     slogan: site.tagline,
     founder: people.map((p) => ({
       "@type": "Person",

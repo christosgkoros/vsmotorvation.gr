@@ -82,7 +82,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="text-sm not-italic">Περιοχές</h3>
+          <h3 className="text-sm not-italic">Εξυπηρετούμε</h3>
           <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
             {areas.map((area) => (
               <li key={area.slug}>
@@ -95,6 +95,9 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
+          <p className="mt-4 text-xs leading-relaxed text-slate-600">
+            Ένα συνεργείο, στην Ηλιούπολη — χωρίς υποκαταστήματα.
+          </p>
         </div>
 
         <div>

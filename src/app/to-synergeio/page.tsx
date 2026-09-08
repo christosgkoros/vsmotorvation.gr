@@ -59,11 +59,12 @@ export default function AboutPage() {
             από την αντιπροσωπεία
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
-            Το {site.name} άνοιξε τον Ιούλιο του 2026 από τον Βασίλη
-            Χατζηκωνσταντίνου και τον Στάθη Σάπκα, μετά από χρόνια σε συνεργεία
-            και πάνω από τέσσερα χρόνια στην αντιπροσωπεία της Piaggio. Έφυγαν
-            για να δουλεύουν απευθείας με τον πελάτη — χωρίς τα γρανάζια του
-            μεγάλου συνεργείου ανάμεσα.
+            Το <strong className="font-semibold text-white">V</strong>ασίλης και
+            ο <strong className="font-semibold text-white">S</strong>τάθης — από
+            εκεί το {site.name}. Άνοιξαν το συνεργείο τον Ιούλιο του 2026, μετά
+            από χρόνια σε συνεργεία και πάνω από τέσσερα χρόνια στην
+            αντιπροσωπεία της Piaggio, για να δουλεύουν απευθείας με τον πελάτη
+            — χωρίς τα γρανάζια του μεγάλου συνεργείου ανάμεσα.
           </p>
         </div>
       </section>
@@ -103,15 +104,23 @@ export default function AboutPage() {
             παρακάμπτονται. Αυτά τα κρατήσαμε. Αφήσαμε πίσω την αναμονή, τα
             τυποποιημένα πακέτα και το να μη μιλάει κανείς στον πελάτη.
           </p>
-          <a
-            href={site.contact.googleBusiness}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="btn-ghost mt-8"
-          >
-            <Star className="h-4 w-4" aria-hidden />
-            Διάβασε τι λένε οι πελάτες μας
-          </a>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={site.contact.googleBusiness}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="btn-ghost"
+            >
+              <Star className="h-4 w-4" aria-hidden />
+              Διάβασε τις {site.reviews.count} κριτικές μας
+            </a>
+            <p className="text-sm text-slate-400">
+              <span className="font-semibold text-white">
+                {site.reviews.count} κριτικές στη Google, όλες {site.reviews.rating} αστέρια
+              </span>{" "}
+              — από τους πρώτους μήνες λειτουργίας.
+            </p>
+          </div>
         </div>
       </section>
 

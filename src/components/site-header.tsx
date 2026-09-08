@@ -11,7 +11,6 @@ import { site } from "@/lib/site";
 
 const nav = [
   { href: "/ypiresies/", label: "Υπηρεσίες" },
-  { href: "/periohes/", label: "Περιοχές" },
   { href: "/to-synergeio/", label: "Το συνεργείο" },
   { href: "/epikoinonia/", label: "Επικοινωνία" },
 ];
@@ -50,7 +49,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={clsx(
-                "px-3 py-2 text-sm font-medium transition lg:px-4",
+                "px-4 py-2 text-sm font-medium transition",
                 pathname === item.href
                   ? "text-white"
                   : "text-slate-300 hover:text-white",

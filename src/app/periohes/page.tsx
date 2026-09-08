@@ -14,7 +14,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   path: "/periohes/",
-  title: "Συνεργείο Μοτοσυκλετών Νότια Προάστια — Περιοχές",
+  title: "Περιοχές που εξυπηρετούμε — Νότια Προάστια",
   description:
     "Συνεργείο μοτοσυκλετών στην Ηλιούπολη που εξυπηρετεί Αργυρούπολη, Γλυφάδα, Νέα Σμύρνη, Παλαιό Φάληρο, Άλιμο, Ελληνικό, Παγκράτι, Υμηττό και Νέο Κόσμο.",
 });
@@ -46,18 +46,18 @@ export default function AreasPage() {
         </div>
         <div className="shell relative py-12 sm:py-20">
           <Breadcrumbs trail={trail} />
-          <p className="eyebrow mt-6">Πού εξυπηρετούμε</p>
+          <p className="eyebrow mt-6">Κάλυψη</p>
           <h1 className="mt-3 max-w-3xl text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
-            Συνεργείο μοτοσυκλετών
+            Ένα συνεργείο,
             <br />
-            στα νότια προάστια
+            όλα τα νότια προάστια
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
-            Η βάση μας είναι στην Ηλιούπολη, στη Λεωφόρο Κυπρίων Ηρώων 73Β.
-            Από εκεί εξυπηρετούμε καθημερινά όλη τη νότια Αθήνα — από τον Νέο
-            Κόσμο και το Παγκράτι μέχρι τη Γλυφάδα και το Παλαιό Φάληρο.
-            Διαλέξτε την περιοχή σας για τη διαδρομή και τι προσέχουμε στις
-            μηχανές που έρχονται από εκεί.
+            Δεν έχουμε υποκαταστήματα. Είμαστε ένα συνεργείο, στη Λεωφόρο
+            Κυπρίων Ηρώων 73Β στην Ηλιούπολη, και μας βρίσκουν από όλη τη νότια
+            Αθήνα — από τον Νέο Κόσμο και το Παγκράτι μέχρι τη Γλυφάδα και το
+            Παλαιό Φάληρο. Διαλέξτε την περιοχή σας για να δείτε τη διαδρομή,
+            πόσο απέχετε και τι προσέχουμε στις μηχανές που έρχονται από εκεί.
           </p>
           <a
             href={`tel:${site.contact.phone}`}
@@ -82,14 +82,14 @@ export default function AreasPage() {
                   {area.name}
                 </h2>
                 <span className="shrink-0 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  {area.minutes === 0 ? "η έδρα μας" : `~${area.minutes}′`}
+                  {area.minutes === 0 ? "η έδρα μας" : `~${area.minutes}′ μακριά`}
                 </span>
               </div>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
                 {area.intro}
               </p>
               <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
-                Συνεργείο {area.name}
+                Πρόσβαση & διαδρομή
                 <ArrowRight
                   className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
                   aria-hidden
@@ -122,7 +122,7 @@ export default function AreasPage() {
       <section className="border-t border-white/10 bg-ink-800">
         <div className="shell flex flex-col items-start gap-6 py-14 sm:py-20 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl">Δες πού ακριβώς είμαστε</h2>
+            <h2 className="text-2xl sm:text-3xl">Η μοναδική μας διεύθυνση</h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
               Λεωφόρος Κυπρίων Ηρώων 73Β, Ηλιούπολη — επί της λεωφόρου, με χώρο
               να αφήσεις τη μηχανή.

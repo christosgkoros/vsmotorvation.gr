@@ -21,11 +21,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   return pageMeta({
     path: `/periohes/${area.slug}/`,
-    title: area.seoTitle ?? `Συνεργείο Μοτοσυκλετών ${area.name} — Service Μηχανής`,
+    title:
+      area.seoTitle ?? `Συνεργείο Μοτοσυκλετών ${area.for} — Έδρα Ηλιούπολη`,
     description:
       area.seoDescription ??
-      `Συνεργείο μοτοσυκλετών ${area.in}: service, διάγνωση, φρένα, ελαστικά και ` +
-        `προέλεγχος ΚΤΕΟ. ${area.minutes} λεπτά με τη μηχανή — ${site.contact.phoneDisplay}.`,
+      `Εξυπηρετούμε ${area.in}: service, διάγνωση, φρένα, ελαστικά, προέλεγχος ` +
+        `ΚΤΕΟ. Έδρα στην Ηλιούπολη, ${area.minutes} λεπτά με τη μηχανή — ${site.contact.phoneDisplay}.`,
   });
 }
 
@@ -49,12 +50,23 @@ export default async function AreaPage({ params }: Params) {
       <section className="border-b border-white/10 bg-ink-800">
         <div className="shell py-12 sm:py-16">
           <Breadcrumbs trail={trail} />
-          <p className="eyebrow mt-6">Νότια προάστια</p>
+          <p className="eyebrow mt-6">Εξυπηρετούμε</p>
           <h1 className="mt-3 max-w-3xl text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
             Συνεργείο μοτοσυκλετών
             <br />
-            {area.name}
+            {area.for}
           </h1>
+
+          {/* Ρητά, ώστε να μη διαβαστεί η σελίδα σαν υποκατάστημα. */}
+          <p className="mt-5 inline-flex max-w-2xl items-start gap-2.5 border-l-2 border-vs-blue pl-4 text-sm leading-relaxed text-slate-300">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-vs-bright" aria-hidden />
+            <span>
+              Το συνεργείο είναι <strong className="font-semibold text-white">ένα</strong>, στη
+              Λεωφόρο Κυπρίων Ηρώων 73Β στην Ηλιούπολη. Δεν έχουμε υποκατάστημα{" "}
+              {area.in} — απλώς είμαστε κοντά.
+            </span>
+          </p>
+
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
             {area.intro}
           </p>
@@ -92,7 +104,7 @@ export default async function AreaPage({ params }: Params) {
             <dl className="mt-10 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3">
               <div className="bg-ink-800 p-6">
                 <Clock className="h-5 w-5 text-vs-bright" aria-hidden />
-                <dt className="label mt-4">Απόσταση</dt>
+                <dt className="label mt-4">Απόσταση από εσάς</dt>
                 <dd className="text-lg text-white">
                   {area.minutes === 0 ? "Είμαστε εδώ" : `~${area.minutes} λεπτά`}
                 </dd>
@@ -106,7 +118,7 @@ export default async function AreaPage({ params }: Params) {
               </div>
               <div className="bg-ink-800 p-6">
                 <MapPin className="h-5 w-5 text-vs-bright" aria-hidden />
-                <dt className="label mt-4">Διεύθυνση</dt>
+                <dt className="label mt-4">Η έδρα μας</dt>
                 <dd className="text-sm leading-relaxed text-slate-300">
                   {fullAddress()}
                 </dd>
@@ -128,7 +140,7 @@ export default async function AreaPage({ params }: Params) {
       <section className="border-y border-white/10 bg-ink-800">
         <div className="shell py-14 sm:py-20">
           <h2 className="text-2xl sm:text-3xl">
-            Τι κάνουμε για μηχανές {area.in}
+            Τι κάνουμε για μηχανές {area.from}
           </h2>
           <ul className="mt-8 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
@@ -157,7 +169,7 @@ export default async function AreaPage({ params }: Params) {
       {/* ── Γειτονικές περιοχές ───────────────────────────────── */}
       {nearby.length > 0 && (
         <section className="shell py-14 sm:py-20">
-          <h2 className="text-2xl sm:text-3xl">Εξυπηρετούμε και δίπλα σας</h2>
+          <h2 className="text-2xl sm:text-3xl">Εξυπηρετούμε και τις γύρω περιοχές</h2>
           <div className="mt-8 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3">
             {nearby.map((n) => (
               <Link
@@ -167,7 +179,7 @@ export default async function AreaPage({ params }: Params) {
               >
                 <h3 className="text-lg not-italic text-white">{n.name}</h3>
                 <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-vs-bright">
-                  Δες την περιοχή
+                  Πρόσβαση & διαδρομή
                   <ArrowRight
                     className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
                     aria-hidden

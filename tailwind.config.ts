@@ -21,8 +21,30 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-body)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Impact", "sans-serif"],
+        /**
+         * Τα fallbacks είναι όλα γραμματοσειρές με πλήρη ελληνική κάλυψη.
+         * Το «Impact» που ήταν εδώ είναι επικίνδυνο σε ελληνικό site: η
+         * κάλυψη ελληνικών διαφέρει ανά πλατφόρμα, οπότε αν δεν φορτώσει η
+         * webfont μπορεί να βγουν τετραγωνάκια αντί για γράμματα.
+         */
+        sans: [
+          "var(--font-body)",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
+        display: [
+          "var(--font-display)",
+          "Arial Narrow",
+          "Helvetica Neue",
+          "Arial",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       maxWidth: { shell: "78rem" },
       keyframes: {
