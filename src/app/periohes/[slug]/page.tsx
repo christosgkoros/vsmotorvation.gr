@@ -57,22 +57,13 @@ export default async function AreaPage({ params }: Params) {
             {area.for}
           </h1>
 
-          {/* Ρητά, ώστε να μη διαβαστεί η σελίδα σαν υποκατάστημα.
-              Στην έδρα μας το μήνυμα είναι διαφορετικό — εκεί ΕΙΜΑΣΤΕ. */}
-          <p className="mt-5 inline-flex max-w-2xl items-start gap-2.5 border-l-2 border-vs-blue pl-4 text-sm leading-relaxed text-slate-300">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-vs-accent" aria-hidden />
-            {area.minutes === 0 ? (
-              <span>
-                Εδώ είναι η <strong className="font-semibold text-white">έδρα μας</strong>:
-                Λεωφόρος Κυπρίων Ηρώων 73Β, επί της λεωφόρου. Είναι το μοναδικό
-                μας σημείο — δεν έχουμε υποκαταστήματα αλλού.
-              </span>
-            ) : (
-              <span>
-                Το συνεργείο είναι <strong className="font-semibold text-white">ένα</strong>, στη
-                Λεωφόρο Κυπρίων Ηρώων 73Β στην Ηλιούπολη. Δεν έχουμε υποκατάστημα{" "}
-                {area.in} — απλώς είμαστε κοντά.
-              </span>
+          {/* Η διεύθυνση, δηλωμένη ήσυχα. Απαντά «πού είστε;» χωρίς να θέτει
+              το ερώτημα «μήπως έχετε υποκατάστημα;» που κανείς δεν έκανε. */}
+          <p className="mt-5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-slate-400">
+            <MapPin className="h-4 w-4 shrink-0 text-vs-accent" aria-hidden />
+            <span className="text-white">{fullAddress()}</span>
+            {area.minutes > 0 && (
+              <span>· περίπου {area.minutes} λεπτά {area.from}</span>
             )}
           </p>
 
@@ -115,24 +106,26 @@ export default async function AreaPage({ params }: Params) {
 
             <dl className="mt-10 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3">
               <div className="bg-ink-800 p-6">
-                <Clock className="h-5 w-5 text-vs-accent" aria-hidden />
+                <Route className="h-5 w-5 text-vs-accent" aria-hidden />
                 <dt className="label mt-4">Απόσταση από εσάς</dt>
                 <dd className="text-lg text-white">
                   {area.minutes === 0 ? "Είμαστε εδώ" : `~${area.minutes} λεπτά`}
                 </dd>
               </div>
               <div className="bg-ink-800 p-6">
-                <Route className="h-5 w-5 text-vs-accent" aria-hidden />
+                <MapPin className="h-5 w-5 text-vs-accent" aria-hidden />
                 <dt className="label mt-4">Διαδρομή</dt>
                 <dd className="text-sm leading-relaxed text-slate-300">
                   {area.via}
                 </dd>
               </div>
               <div className="bg-ink-800 p-6">
-                <MapPin className="h-5 w-5 text-vs-accent" aria-hidden />
-                <dt className="label mt-4">Η έδρα μας</dt>
+                <Clock className="h-5 w-5 text-vs-accent" aria-hidden />
+                <dt className="label mt-4">Ωράριο</dt>
                 <dd className="text-sm leading-relaxed text-slate-300">
-                  {fullAddress()}
+                  Δευτέρα–Παρασκευή, 09:00–18:00
+                  <br />
+                  Σαββατοκύριακο κλειστά
                 </dd>
               </div>
             </dl>

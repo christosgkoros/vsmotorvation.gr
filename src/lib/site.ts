@@ -43,6 +43,9 @@ export const site = {
     facebook: "https://www.facebook.com/profile.php?id=61592913626544",
   },
 
+  /** Google Analytics 4. Κενό = καθόλου tracking. */
+  ga4: "G-17FW2TDWBP",
+
   /** Πότε άνοιξε το συνεργείο (ISO 8601, YYYY-MM). */
   founded: "2026-07",
 

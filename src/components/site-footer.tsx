@@ -11,7 +11,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-white/10 bg-ink-800">
-      <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo height={40} />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
@@ -85,25 +85,6 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h2 className="text-sm not-italic">Εξυπηρετούμε</h2>
-          <ul className="mt-3 text-sm text-slate-400">
-            {areas.map((area) => (
-              <li key={area.slug}>
-                <Link
-                  href={`/periohes/${area.slug}/`}
-                  className="block py-1.5 transition hover:text-white"
-                >
-                  {area.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-xs leading-relaxed text-slate-400">
-            Ένα συνεργείο, στην Ηλιούπολη — χωρίς υποκαταστήματα.
-          </p>
-        </div>
-
-        <div>
           <h2 className="text-sm not-italic">Ωράριο</h2>
           <ul className="mt-4 space-y-1.5 text-sm text-slate-400">
             {site.hours.map((h) => (
@@ -119,6 +100,25 @@ export function SiteFooter() {
             <Clock className="h-3.5 w-3.5" aria-hidden />
             Εκτός ωραρίου, κατόπιν τηλεφωνικής συνεννόησης
           </p>
+        </div>
+      </div>
+
+      {/* Οι περιοχές, ως γραμμή κάλυψης. Ήταν στήλη με 11 ονόματα, που
+          διαβαζόταν σαν λίστα καταστημάτων. */}
+      <div className="border-t border-white/5">
+        <div className="shell py-5 text-xs leading-relaxed text-slate-400">
+          <span className="text-slate-300">Εξυπηρετούμε:</span>{" "}
+          {areas.map((area, i) => (
+            <span key={area.slug}>
+              {i > 0 && <span aria-hidden> · </span>}
+              <Link
+                href={`/periohes/${area.slug}/`}
+                className="underline-offset-4 transition hover:text-white hover:underline"
+              >
+                {area.name}
+              </Link>
+            </span>
+          ))}
         </div>
       </div>
 

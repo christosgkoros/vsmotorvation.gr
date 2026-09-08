@@ -145,6 +145,16 @@ site είναι καθαρά ενημερωτικό, στατικό, χωρίς 
   περισσότερο από κάθε άλλη ρύθμιση εδώ.
 - `max-snippet:-1` ώστε να μην κόβονται τα αποσπάσματα.
 
+**Στατιστικά.** Google Analytics 4 (`site.ga4`), μέσω
+`src/components/analytics.tsx`. Φορτώνει μόνο σε production build.
+
+> ⚠️ **Συγκατάθεση cookies.** Το GA4 γράφει cookies. Στην ΕΕ αυτό απαιτεί
+> συγκατάθεση του επισκέπτη **πριν** ενεργοποιηθεί το tracking (ePrivacy +
+> GDPR). Σήμερα το script φορτώνει χωρίς banner. Αν θέλετε συμμόρφωση,
+> χρειάζεται banner με Google Consent Mode v2, ή αντικατάσταση του GA με
+> analytics χωρίς cookies (π.χ. Plausible, Fathom, Umami), που δεν απαιτούν
+> banner.
+
 **Εκκρεμεί εκτός κώδικα**
 
 - Google Search Console: υποβολή του `sitemap.xml`

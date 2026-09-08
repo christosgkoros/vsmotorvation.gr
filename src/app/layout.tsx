@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Condensed } from "next/font/google";
 
+import { Analytics } from "@/components/analytics";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { asset } from "@/lib/asset";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteFooter />
         <JsonLd data={localBusinessSchema()} />
         <JsonLd data={webSiteSchema()} />
+        <Analytics />
         <meta itemProp="address" content={fullAddress()} />
       </body>
     </html>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   Gauge,
-  MapPin,
   MessageSquareText,
   Phone,
   ShieldCheck,
@@ -11,7 +10,6 @@ import {
 
 import { Hero } from "@/components/hero";
 import { Media, Section, SectionHead, SlashRule } from "@/components/ui";
-import { areas } from "@/lib/areas";
 import { asset } from "@/lib/asset";
 import { JsonLd, faqSchema } from "@/lib/seo";
 import { gallery, services, site } from "@/lib/site";
@@ -169,6 +167,17 @@ export default function HomePage() {
             </span>
           </a>
         </div>
+
+        <p className="mt-8 text-sm leading-relaxed text-slate-400">
+          Στην Ηλιούπολη, εξυπηρετούμε όλα τα νότια προάστια —{" "}
+          <Link
+            href="/periohes/"
+            className="text-vs-accent underline-offset-4 hover:underline"
+          >
+            δες πόσο απέχεις
+          </Link>
+          .
+        </p>
       </Section>
 
       {/* ── Γιατί εμάς ────────────────────────────────────────── */}
@@ -252,35 +261,6 @@ export default function HomePage() {
             </figure>
           ))}
         </div>
-      </Section>
-
-      {/* ── Περιοχές ──────────────────────────────────────────── */}
-      <Section id="periohes" tone="raised">
-        <SectionHead
-          eyebrow="Πού εξυπηρετούμε"
-          title="Ένα συνεργείο, όλα τα νότια προάστια"
-          intro="Είμαστε στην Ηλιούπολη και μόνο εκεί — χωρίς υποκαταστήματα. Μας βρίσκουν όμως από όλη τη νότια Αθήνα. Διάλεξε την περιοχή σου για τη διαδρομή και πόσο απέχεις."
-        />
-        <ul className="mt-10 flex flex-wrap gap-2.5">
-          {areas.map((area) => (
-            <li key={area.slug}>
-              <Link
-                href={`/periohes/${area.slug}/`}
-                className="slash inline-flex items-center gap-2 border border-white/15 bg-ink-700 px-4 py-2.5 text-sm text-slate-300 transition hover:border-vs-bright hover:text-white"
-              >
-                <MapPin className="h-3.5 w-3.5 text-vs-accent" aria-hidden />
-                {area.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link
-          href="/periohes/"
-          className="mt-8 inline-flex items-center gap-1.5 py-1.5 text-sm text-vs-accent underline-offset-4 hover:underline"
-        >
-          Όλες οι περιοχές και οι διαδρομές
-          <ArrowRight className="h-4 w-4" aria-hidden />
-        </Link>
       </Section>
 
       {/* ── Συχνές ερωτήσεις ──────────────────────────────────── */}
