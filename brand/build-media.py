@@ -34,6 +34,9 @@ VIDEOS = {
 WATERMARK_CUT = {"v1": 0, "v2": 470, "v3": 450}
 
 # name -> (video, seconds, aspect w:h, κάθετο anchor 0=πάνω 1=κάτω)
+#
+# Δεν είναι όλη η gallery από εδώ: οι φωτογραφίες του χώρου και των σκούτερ
+# βγαίνουν από το build-photos.py (πηγή το Google Business Profile).
 SHOTS = [
     ("hero-m1000xr",     "v1", 23, (3, 4),  0.45),
     ("workshop",         "v2", 17, (4, 5),  0.50),
@@ -42,9 +45,7 @@ SHOTS = [
     ("bike-on-lift",     "v1", 15, (16, 9), 0.50),
     ("exhaust",          "v1", 19, (1, 1),  0.45),
     ("brakes",           "v3", 21, (1, 1),  0.45),
-    ("engine",           "v1", 13, (1, 1),  0.50),
     ("m-badge",          "v3",  7, (1, 1),  0.45),
-    ("roundel",          "v3", 15, (1, 1),  0.40),
 ]
 
 # Το v3 είναι full-frame σε όλη τη διάρκεια (το v1 έχει letterbox σε σημεία),

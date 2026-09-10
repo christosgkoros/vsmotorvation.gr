@@ -3,10 +3,7 @@ import type { MetadataRoute } from "next";
 import { areas } from "@/lib/areas";
 import { site } from "@/lib/site";
 
-/**
- * Το sitemap δείχνει πάντα στο vsmotorvation.gr, ακόμη κι όταν το build
- * τρέχει για το αντίγραφο του GitHub Pages — εκεί το αντίγραφο είναι noindex.
- */
+/** Το sitemap δείχνει πάντα στο vsmotorvation.gr, ό,τι domain κι αν χτίζει. */
 const pages = [
   { path: "/", priority: 1 },
   { path: "/ypiresies/", priority: 0.9 },

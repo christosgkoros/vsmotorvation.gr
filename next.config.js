@@ -1,9 +1,10 @@
 /**
  * Το site βγαίνει ως στατικά αρχεία (`next build` → out/).
  *
- * NEXT_PUBLIC_BASE_PATH: κενό για custom domain (vsmotorvation.gr),
- * ή "/vsmotorvation.gr" όταν σερβίρεται από GitHub Pages project page.
- * Το θέτει το .github/workflows/deploy.yml.
+ * Το production είναι στο Netlify, στη ρίζα του vsmotorvation.gr, οπότε το
+ * NEXT_PUBLIC_BASE_PATH είναι κενό και ο basePath βγαίνει "".
+ * Μένει ως διέξοδος αν ποτέ χρειαστεί σερβίρισμα από υπο-φάκελο — τότε
+ * αρκεί να τεθεί η μεταβλητή στο περιβάλλον του build.
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
