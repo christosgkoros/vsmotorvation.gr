@@ -64,9 +64,16 @@ export const metadata: Metadata = {
   },
   // Το basePath δεν εφαρμόζεται αυτόματα στα metadata icons — δείτε lib/asset.
   icons: {
+    /**
+     * Το .ico μπαίνει πρώτο και ζει στη ρίζα: ο browser το ζητάει στο
+     * /favicon.ico από μόνος του, πριν διαβάσει HTML — και το ίδιο κάνουν
+     * Google, Slack, bookmarks. Χωρίς αυτό έπαιρναν 404.
+     * Έχει καρέ 16/32/48· τα δύο μεγάλα είναι και τα μόνα αναγνώσιμα.
+     */
     icon: [
+      { url: asset("/favicon.ico"), sizes: "16x16 32x32 48x48" },
       { url: asset("/brand/favicon.svg"), type: "image/svg+xml" },
-      { url: asset("/brand/favicon-32.png"), sizes: "32x32" },
+      { url: asset("/brand/favicon-32.png"), type: "image/png", sizes: "32x32" },
     ],
     apple: asset("/brand/apple-touch-icon.png"),
   },

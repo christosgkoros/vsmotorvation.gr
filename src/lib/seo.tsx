@@ -68,8 +68,17 @@ export function localBusinessSchema() {
     url: site.url,
     telephone: site.contact.phone,
     email: site.contact.email,
+    /**
+     * Η Google διαλέγει μόνη της ποια θα δείξει στο Knowledge Panel, οπότε
+     * δίνουμε ποικιλία: τον χώρο, δουλειά σε εξέλιξη και σκούτερ — όχι μόνο
+     * την ίδια BMW, που ήταν και όλο το προηγούμενο set.
+     */
     image: [
       `${site.url}/media/og-image.jpg`,
+      `${site.url}/media/workshop-interior.jpg`,
+      `${site.url}/media/scooter-service.jpg`,
+      `${site.url}/media/vespa-lift.jpg`,
+      `${site.url}/media/engine-detail.jpg`,
       `${site.url}/media/workshop.jpg`,
       `${site.url}/media/bike-on-lift.jpg`,
     ],

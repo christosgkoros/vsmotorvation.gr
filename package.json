@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "brand": "python3 brand/build-logo.py",
+    "icons": "python3 brand/build-icons.py",
+    "photos": "python3 brand/build-photos.py",
     "media": "python3 brand/build-media.py"
   },
   "dependencies": {
